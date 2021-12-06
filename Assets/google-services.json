@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "621309398240",
+    "firebase_url": "https://itddda-asg2-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "itddda-asg2",
+    "storage_bucket": "itddda-asg2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:621309398240:android:312fbc1fb6d3b2a909d485",
+        "android_client_info": {
+          "package_name": "com.itddda.pcbuilder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "621309398240-j6l3kk52fv5pb07mpj1nf6ce9stvh7lf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3CxeTGR8VfTkDzBjN0HGuR0PMi_ZBgfg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "621309398240-j6l3kk52fv5pb07mpj1nf6ce9stvh7lf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
