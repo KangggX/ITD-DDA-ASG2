@@ -12,6 +12,7 @@ import { getDatabase, ref, child, push, get, set, onValue, orderByChild } from "
 const firebaseConfig = {
     apiKey: "AIzaSyDJavYfxSr8P_SxgFjMr87xP5OjtyQSl2U",
     authDomain: "itddda-asg2.firebaseapp.com",
+    databaseURL: "https://itddda-asg2-default-rtdb.asia-southeast1.firebasedatabase.app",
     projectId: "itddda-asg2",
     storageBucket: "itddda-asg2.appspot.com",
     messagingSenderId: "621309398240",
@@ -23,7 +24,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
 const db = getDatabase();
-const userRef = ref(db, "users");
+const userRef = ref(db, "players");
 
 //Working with Auth
 const auth = getAuth();
@@ -66,7 +67,9 @@ function getPlayerData(){
     //PlayerRef is declared at the top using a constant
     //get(child(db,`players/`))
     get(userRef).then((snapshot) => {//retrieve a snapshot of the data using a callback\
+        console.log(snapshot);
         if (snapshot.exists()) {//if the data exist
+            console.log("yes");
             try {
                 $("#result").empty(); // Clear leaderboard content first
                 $("#result").append(`<tr>
@@ -111,8 +114,8 @@ function createUser(email, username, password) {
 }
 
 function createUserDatabase(email, username) {
-    const key = push(child(userRef));
-    // const key = db.child("users").push().key;
+    const key = push(userRef);
+    // const key = db.child("players").push().key;
     playerData.email = email;
     playerData.username = username;
 
