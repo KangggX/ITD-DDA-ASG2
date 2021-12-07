@@ -5,7 +5,7 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-
 // https://firebase.google.com/docs/web/setup#available-libraries
 // Import the functions you need from the SDKs you need
 import { getAuth, initializeAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js";
-import { getDatabase, ref, child, get, set, onValue, orderByChild } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-database.js";
+import { getDatabase, ref, child, push, get, set, onValue, orderByChild } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-database.js";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -111,10 +111,10 @@ function createUser(email, username, password) {
 }
 
 function createUserDatabase(email, username) {
-    // const key = push(child(userRef)).key;
-    const key = db.child("users").push().key;
+    const key = push(child(userRef));
+    // const key = db.child("users").push().key;
     playerData.email = email;
     playerData.username = username;
 
-    set(ref(db, `users/${key}`), playerData);
+    set(key, playerData);
 }
