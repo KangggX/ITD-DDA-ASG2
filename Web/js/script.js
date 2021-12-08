@@ -40,15 +40,15 @@ formCreateUser.addEventListener("submit", function(e){
     createUser(email, username, password);
 });
 
-function retrieveLeaderboardData() {
+async function retrieveLeaderboardData() {
     const que = query(playerRef, orderByChild("highestScore"));
 
-    get(que).then((snapshot) => {
+    get(que).then( async (snapshot) => {
         if (snapshot.exists()) {
-            snapshot.forEach((childSnapshot) => {
-                leaderboardName.push(childSnapshot.child("username").val());
-                leaderboardScore.push(childSnapshot.child("highestScore").val());
-                console.log(`Name: ${childSnapshot.child("username").val()}, Highest Score: ${childSnapshot.child("highestScore").val()}`);
+            snapshot.forEach( async (childSnapshot) => {
+                 leaderboardName.push(childSnapshot.child("username").val());
+                 leaderboardScore.push(childSnapshot.child("highestScore").val());
+                 console.log(`Name: ${childSnapshot.child("username").val()}, Highest Score: ${childSnapshot.child("highestScore").val()}`);
             });
     
             leaderboardName.reverse();
@@ -59,7 +59,7 @@ function retrieveLeaderboardData() {
 
 function updateLeaderboard(){
     retrieveLeaderboardData();
-
+    
     // get(playerRef).then((snapshot) => {//retrieve a snapshot of the data using a callback\
     //     console.log(snapshot);
     //     if (snapshot.exists()) {//if the data exist
@@ -88,6 +88,21 @@ function updateLeaderboard(){
     //         }
     //     }
     // });
+
+    $("#leaderboard").empty(); // Clear leaderboard content first
+    $("#leaderboard").append(`<tr>
+        <th>Rank</th>
+        <th>Points</th>
+        <th>Username</th>
+    </tr>`);
+
+    for (let i = 0; i < leaderboardName.length; i++) {
+        $("#leaderboard").append(`<tr>
+            <td>${i + 1}</td>
+            <td>${leaderboardScore[leaderboardName.length - (i + 1)]}</td>
+            <td>${leaderboardName[leaderboardName.length - (i + 1)]}</td>
+        </tr>`);
+    }
 }
 
 //create a new user based on email n password into Auth service
