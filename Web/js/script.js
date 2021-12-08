@@ -60,35 +60,35 @@ function retrieveLeaderboardData() {
 function updateLeaderboard(){
     retrieveLeaderboardData();
 
-    get(playerRef).then((snapshot) => {//retrieve a snapshot of the data using a callback\
-        console.log(snapshot);
-        if (snapshot.exists()) {//if the data exist
-            console.log("yes");
-            try {
-                $("#leaderboard").empty(); // Clear leaderboard content first
-                $("#leaderboard").append(`<tr>
-                    <th>Rank</th>
-                    <th>Points</th>
-                    <th>Username</th>
-                </tr>`);
+    // get(playerRef).then((snapshot) => {//retrieve a snapshot of the data using a callback\
+    //     console.log(snapshot);
+    //     if (snapshot.exists()) {//if the data exist
+    //         console.log("yes");
+    //         try {
+    //             $("#leaderboard").empty(); // Clear leaderboard content first
+    //             $("#leaderboard").append(`<tr>
+    //                 <th>Rank</th>
+    //                 <th>Points</th>
+    //                 <th>Username</th>
+    //             </tr>`);
 
-                snapshot.forEach((childSnapshot) => {//looping through each snapshot
-                    //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
+    //             snapshot.forEach((childSnapshot) => {//looping through each snapshot
+    //                 //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
 
-                    console.log("GetPlayerData: childkey " + childSnapshot.key);
+    //                 console.log("GetPlayerData: childkey " + childSnapshot.key);
 
-                    $("#leaderboard").append(`<tr>
-                        <td>${childSnapshot.child("username").val()}</td>
-                        <td>${childSnapshot.child("highestScore").val()}</td>
-                        <td>${childSnapshot.child("username").val()}</td>
-                    </tr>`);
-                });
-            } catch(error) {
-                console.log("Error getPlayerData" + error);
-            }
-        }
-    });
-}//end getPlayerData
+    //                 $("#leaderboard").append(`<tr>
+    //                     <td>${childSnapshot.child("username").val()}</td>
+    //                     <td>${childSnapshot.child("highestScore").val()}</td>
+    //                     <td>${childSnapshot.child("username").val()}</td>
+    //                 </tr>`);
+    //             });
+    //         } catch(error) {
+    //             console.log("Error getPlayerData" + error);
+    //         }
+    //     }
+    // });
+}
 
 //create a new user based on email n password into Auth service
 //user will get signed in
