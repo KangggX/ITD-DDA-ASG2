@@ -2,10 +2,10 @@
 // https://firebase.google.com/docs/web/setup#available-libraries
 // Import the functions you need from the SDKs you need
 import { getAuth, initializeAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js";
-import { getDatabase, ref, child, push, get, set, onValue, orderByChild } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-database.js";
+import { getDatabase, ref, child, push, get, set, onValue, orderByChild, orderByKey, query } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-database.js";
 
 const db = getDatabase();
-const userRef = ref(db, "players");
+const playerRef = ref(db, "players");
 
 //Working with Auth
 const auth = getAuth();
@@ -20,8 +20,18 @@ var playerData = {
     averageAccuracy: 100
 }
 
-onValue(userRef, (snapshot) => {
-    getPlayerData();
+onValue(playerRef, (snapshot) => {
+    updateLeaderboard();
+});
+
+const que = query(playerRef, orderByChild("highestScore"));
+
+get(que).then((snapshot) => {
+    // console.log(snapshot.val());
+
+    snapshot.forEach((childSnapshot) => {
+        console.log(childSnapshot.val());
+    });
 });
 
 //retrieve element from form
@@ -43,19 +53,20 @@ formCreateUser.addEventListener("submit", function(e){
 //     getPlayerData();
 // });
 
-function getPlayerData(){
+function updateLeaderboard(){
     //const playerRef = ref(db, "players");
     //PlayerRef is declared at the top using a constant
     //get(child(db,`players/`))
-    get(userRef).then((snapshot) => {//retrieve a snapshot of the data using a callback\
+    get(playerRef).then((snapshot) => {//retrieve a snapshot of the data using a callback\
         console.log(snapshot);
         if (snapshot.exists()) {//if the data exist
             console.log("yes");
             try {
-                $("#result").empty(); // Clear leaderboard content first
-                $("#result").append(`<tr>
-                    <th>Name</th>
-                    <th>Email</th>
+                $("#leaderboard").empty(); // Clear leaderboard content first
+                $("#leaderboard").append(`<tr>
+                    <th>Rank</th>
+                    <th>Points</th>
+                    <th>Username</th>
                 </tr>`); // Adds header to leaderboard
 
                 snapshot.forEach((childSnapshot) => {//looping through each snapshot
@@ -63,9 +74,10 @@ function getPlayerData(){
 
                     console.log("GetPlayerData: childkey " + childSnapshot.key);
 
-                    $("#result").append(`<tr>
+                    $("#leaderboard").append(`<tr>
                         <td>${childSnapshot.child("username").val()}</td>
-                        <td>${childSnapshot.child("email").val()}</td>
+                        <td>${childSnapshot.child("highestScore").val()}</td>
+                        <td>${childSnapshot.child("username").val()}</td>
                     </tr>`);
                 });
             } catch(error) {
@@ -95,7 +107,7 @@ function createUser(email, username, password) {
 }
 
 function createUserDatabase(email, username) {
-    const key = push(userRef);
+    const key = push(playerRef);
     // const key = db.child("players").push().key;
     playerData.email = email;
     playerData.username = username;
