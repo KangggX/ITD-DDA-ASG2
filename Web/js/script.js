@@ -20,18 +20,11 @@ var playerData = {
     averageAccuracy: 100
 }
 
+var leaderboardName = [];
+var leaderboardScore = [];
+
 onValue(playerRef, (snapshot) => {
     updateLeaderboard();
-});
-
-const que = query(playerRef, orderByChild("highestScore"));
-
-get(que).then((snapshot) => {
-    // console.log(snapshot.val());
-
-    snapshot.forEach((childSnapshot) => {
-        console.log(childSnapshot.val());
-    });
 });
 
 //retrieve element from form
@@ -47,16 +40,26 @@ formCreateUser.addEventListener("submit", function(e){
     createUser(email, username, password);
 });
 
-// // Read player data
-// document.getElementById("formReadUser").addEventListener("click", function(e) {
-//     e.preventDefault();
-//     getPlayerData();
-// });
+function retrieveLeaderboardData() {
+    const que = query(playerRef, orderByChild("highestScore"));
+
+    get(que).then((snapshot) => {
+        if (snapshot.exists()) {
+            snapshot.forEach((childSnapshot) => {
+                leaderboardName.push(childSnapshot.child("username").val());
+                leaderboardScore.push(childSnapshot.child("highestScore").val());
+                console.log(`Name: ${childSnapshot.child("username").val()}, Highest Score: ${childSnapshot.child("highestScore").val()}`);
+            });
+    
+            leaderboardName.reverse();
+            leaderboardScore.reverse();
+        }
+    });
+}
 
 function updateLeaderboard(){
-    //const playerRef = ref(db, "players");
-    //PlayerRef is declared at the top using a constant
-    //get(child(db,`players/`))
+    retrieveLeaderboardData();
+
     get(playerRef).then((snapshot) => {//retrieve a snapshot of the data using a callback\
         console.log(snapshot);
         if (snapshot.exists()) {//if the data exist
@@ -67,7 +70,7 @@ function updateLeaderboard(){
                     <th>Rank</th>
                     <th>Points</th>
                     <th>Username</th>
-                </tr>`); // Adds header to leaderboard
+                </tr>`);
 
                 snapshot.forEach((childSnapshot) => {//looping through each snapshot
                     //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
