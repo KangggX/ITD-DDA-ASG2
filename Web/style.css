@@ -12,3 +12,7 @@ form.form-vertical {
     flex-direction: column;
     align-items: center;
 }
+
+form .form-input {
+    margin-bottom: 5px;
+}
