@@ -40,26 +40,30 @@ formCreateUser.addEventListener("submit", function(e){
     createUser(email, username, password);
 });
 
-async function retrieveLeaderboardData() {
+function retrieveLeaderboardData() {
     const que = query(playerRef, orderByChild("highestScore"));
 
-    get(que).then( async (snapshot) => {
+    get(que).then((snapshot) => {
         if (snapshot.exists()) {
-            snapshot.forEach( async (childSnapshot) => {
-                 leaderboardName.push(childSnapshot.child("username").val());
-                 leaderboardScore.push(childSnapshot.child("highestScore").val());
-                 console.log(`Name: ${childSnapshot.child("username").val()}, Highest Score: ${childSnapshot.child("highestScore").val()}`);
+            snapshot.forEach((childSnapshot) => {
+                console.log("hi");
+                leaderboardName.push(childSnapshot.child("username").val());
+                leaderboardScore.push(childSnapshot.child("highestScore").val());
+                console.log(`Name: ${childSnapshot.child("username").val()}, Highest Score: ${childSnapshot.child("highestScore").val()}`);
             });
-    
-            leaderboardName.reverse();
-            leaderboardScore.reverse();
+
+            console.log(leaderboardName);
+            // leaderboardName.reverse();
+            // leaderboardScore.reverse();
         }
     });
 }
 
 function updateLeaderboard(){
     retrieveLeaderboardData();
-    
+    // await retrieveLeaderboardData();
+    // retrieveLeaderboardData().then(console.log);
+
     // get(playerRef).then((snapshot) => {//retrieve a snapshot of the data using a callback\
     //     console.log(snapshot);
     //     if (snapshot.exists()) {//if the data exist
@@ -89,20 +93,23 @@ function updateLeaderboard(){
     //     }
     // });
 
-    $("#leaderboard").empty(); // Clear leaderboard content first
-    $("#leaderboard").append(`<tr>
-        <th>Rank</th>
-        <th>Points</th>
-        <th>Username</th>
-    </tr>`);
-
-    for (let i = 0; i < leaderboardName.length; i++) {
+    setTimeout(() => {
+        $("#leaderboard").empty(); // Clear leaderboard content first
         $("#leaderboard").append(`<tr>
-            <td>${i + 1}</td>
-            <td>${leaderboardScore[leaderboardName.length - (i + 1)]}</td>
-            <td>${leaderboardName[leaderboardName.length - (i + 1)]}</td>
+            <th>Rank</th>
+            <th>Points</th>
+            <th>Username</th>
         </tr>`);
-    }
+
+        for (let i = 0; i < leaderboardName.length; i++) {
+            $("#leaderboard").append(`<tr>
+                <td>${i + 1}</td>
+                <td>${leaderboardScore[leaderboardName.length - (i + 1)]}</td>
+                <td>${leaderboardName[leaderboardName.length - (i + 1)]}</td>
+            </tr>`);
+        }
+    }, 100);
+    
 }
 
 //create a new user based on email n password into Auth service

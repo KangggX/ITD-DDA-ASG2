@@ -1,10 +1,13 @@
+/* 'Electrolize', sans-serif */
+@import url('https://fonts.googleapis.com/css2?family=Electrolize&display=swap');
+
 body {
     margin: 0;
 }
 
 .body-margin {
     margin: 0 auto;
-    width: 550px;
+    width: 750px;
 }
 
 form.form-vertical {
@@ -18,7 +21,12 @@ form .form-input {
 }
 
 /* Leaderboard styling */
+#leaderboard th, td {
+    font-family: "Electrolize", sans-serif;
+}
+
 #leaderboard th {
+    font-size: 24px;
     padding: 5px 30px;
 }
 
