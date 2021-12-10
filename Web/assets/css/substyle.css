@@ -7,7 +7,7 @@ body {
 
 .body-margin {
     margin: 0 auto;
-    width: 750px;
+    width: 850px;
 }
 
 form.form-vertical {
@@ -32,4 +32,56 @@ form .form-input {
 
 #leaderboard td {
     text-align: center;
+}
+
+.leaderboard {
+    width: 550px;
+    margin: 0 auto;
+    font-family: "Electrolize", sans-serif;
+}
+
+.leaderboard__list {
+    margin: 0;
+    padding: 0;
+}
+
+.leaderboard__list li {
+    display: flex;
+    align-content: center;
+    list-style: none;
+}
+
+.leaderboard__list li:not(:first-child) {
+    background-color: #c0c0c0;
+    border-bottom: 3px solid #363636;
+    height: 70px;
+}
+
+.leaderboard__list--content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+}
+
+.leaderboard__title--ranking,
+.leaderboard__title--score,
+.leaderboard__title--username {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.leaderboard--ranking,
+.leaderboard__title--ranking {
+    width: 25%;
+}
+
+.leaderboard--score,
+.leaderboard__title--score {
+    width: 25%;
+}
+
+.leaderboard--username,
+.leaderboard__title--username {
+    width: 50%;
 }

@@ -20,6 +20,8 @@
     1. COMMON css 
 ===========================*/
 @import url("https://fonts.googleapis.com/css?family=Barlow:300,400,500,600,700|Hind:400,500,600,700|Quattrocento:400,700");
+@import url('https://fonts.googleapis.com/css2?family=Electrolize&display=swap');
+
 body {
   font-family: 'Hind', sans-serif;
   font-weight: normal;

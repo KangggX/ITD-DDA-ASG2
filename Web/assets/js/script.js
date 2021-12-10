@@ -13,7 +13,7 @@ const auth = getAuth();
 var playerData = {
     email: "",
     username: "",
-    leaderboardPosition: "",
+    leaderboardPosition: "N/A",
     totalGame: 0,
     totalScore: 0,
     highestScore: 0,
@@ -95,6 +95,8 @@ function updateLeaderboard(){
 
     setTimeout(() => {
         $("#leaderboard").empty(); // Clear leaderboard content first
+        $(".leaderboard-list").empty();
+        
         $("#leaderboard").append(`<tr>
             <th>Rank</th>
             <th>Points</th>
@@ -107,6 +109,12 @@ function updateLeaderboard(){
                 <td>${leaderboardScore[leaderboardName.length - (i + 1)]}</td>
                 <td>${leaderboardName[leaderboardName.length - (i + 1)]}</td>
             </tr>`);
+
+            $(".leaderboard__list").append(`<li>
+                <div class="leaderboard__list--content leaderboard--ranking">${i + 1}</div>
+                <div class="leaderboard__list--content leaderboard--score">${leaderboardScore[leaderboardName.length - (i + 1)]}</div>
+                <div class="leaderboard__list--content leaderboard--username">${leaderboardName[leaderboardName.length - (i + 1)]}</div>
+            </li>`)
         }
     }, 100);
     
