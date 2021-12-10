@@ -62,7 +62,7 @@ h5,
 h6 {
   font-family: 'Quattrocento', serif;
   font-weight: 700;
-  color: #121619;
+  color: blueviolet;
   margin: 0px; }
 
 h1 {
@@ -941,7 +941,10 @@ p {
     .project-active .slick-dots li.slick-active button {
       width: 35px;
       background-color: #EB3656; }
-
+      
+.adjust-center-learn {
+  margin-left: 92px;
+}
 /*===========================
         6.TEAM css 
 ===========================*/
@@ -1021,6 +1024,10 @@ p {
     margin-top: 25px;
     opacity: 1;
     visibility: visible; }
+
+.adjust-center {
+  margin-left: 285px;
+}
 
 /*===========================
       7.TESTIMONIAL css 
@@ -1175,6 +1182,10 @@ p.form-message.error {
   margin-left: 2px;
   margin-top: 5px;
   color: #f00; }
+
+.adjust-center-contact {
+  margin-left: 142px;
+}
 
 /*===========================
          9.MAP css 
