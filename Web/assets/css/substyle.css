@@ -1,8 +1,31 @@
+/*===========================
+    Form Imports
+===========================*/
 /* 'Electrolize', sans-serif */
 @import url('https://fonts.googleapis.com/css2?family=Electrolize&display=swap');
 
 body {
     margin: 0;
+}
+
+a:hover {
+    text-decoration: none !important;
+}
+
+/*===========================
+    Color styling
+===========================*/
+.blue {
+    background-color: #0084F5;
+}
+
+.red {
+    background-color: #EB3656;
+    color: #fff;
+}
+
+.red:hover {
+    background-color: #d72344;
 }
 
 .body-margin {
@@ -20,7 +43,9 @@ form .form-input {
     margin-bottom: 5px;
 }
 
-/* Leaderboard styling */
+/*===========================
+    Leaderboard styling
+===========================*/
 #leaderboard th, td {
     font-family: "Electrolize", sans-serif;
 }
@@ -84,4 +109,142 @@ form .form-input {
 .leaderboard--username,
 .leaderboard__title--username {
     width: 50%;
+}
+
+/*===========================
+    Sign In/Sign Up styling
+===========================*/
+.form {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 90px 10px;
+}
+
+.form-container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.form__wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.form__box {
+    display: flex;
+    position: relative;
+    background-color: #fff;
+    width: 100%;
+    padding: 90px 45px;
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form__back {
+    position: absolute;
+    top: 28px;
+    left: 30px;
+    cursor: pointer;
+}
+
+.form__title h2 {
+    color: #111111;
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.form__error, .field__error--first, .field__error--second {
+    display: none;
+    color: black;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.field__error--first, .field__error--second {
+    text-align: left;
+    font-size: 14px;
+}
+
+.form__fields {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.field__input {
+    position: relative;
+}
+
+.field__input input {
+    width: 100%;
+    padding: 25px 20px;
+    background-color: rgba(117, 117, 177, 0.15);
+    border: none;
+    border-radius: 3px;
+    font-weight: 500;
+}
+
+.field__label {
+    position: absolute;
+    color: #404040;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    pointer-events: none;
+    transition: 0.15s all ease-in-out;
+}
+
+.field__input--email:focus + .field__label, .field__input--password:focus + .field__label, .field__input--username:focus + .field__label, .field__input--non-empty + .field__label {
+    opacity: 0;
+}
+
+.field__submit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 80px;
+    font-size: 20px;
+}
+
+.submission__button {
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 120px;
+    font-weight: 500;
+    transition: .15s all ease-in-out;
+}
+
+.submission__button:disabled {
+    background-color: #a1a1ab;
+}
+
+.submission__label {
+    text-align: center;
+    color: rgba(64, 64, 64, 0.85);
+    margin-top: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+
+/*===========================
+    Media Queries
+===========================*/
+@media (min-width: 960px) {
+    .form-container {
+        max-width: 720px;
+    }
 }
