@@ -9,6 +9,7 @@ const playerRef = ref(db, "players");
 
 //Working with Auth
 const auth = getAuth();
+const user = auth.currentUser;
 
 var playerData = {
     email: "",
@@ -19,6 +20,8 @@ var playerData = {
     highestScore: 0,
     averageAccuracy: 100
 }
+
+console.log(user);
 
 var leaderboardName = [];
 var leaderboardScore = [];
@@ -42,6 +45,9 @@ formCreateUser.addEventListener("submit", function(e){
 
 function retrieveLeaderboardData() {
     const que = query(playerRef, orderByChild("highestScore"));
+
+    leaderboardName.length = 0; // Clears the array
+    leaderboardScore.length = 0; // Clears the array
 
     get(que).then((snapshot) => {
         if (snapshot.exists()) {
@@ -95,13 +101,22 @@ function updateLeaderboard(){
 
     setTimeout(() => {
         $("#leaderboard").empty(); // Clear leaderboard content first
-        $(".leaderboard-list").empty();
+        $(".leaderboard__list").empty(); // Clear leaderboard content first
         
         $("#leaderboard").append(`<tr>
             <th>Rank</th>
             <th>Points</th>
             <th>Username</th>
         </tr>`);
+
+        // Appending header
+        $(".leaderboard__list").append(`
+            <li>
+                <div class="leaderboard__list--content leaderboard__title--ranking">Ranking</div>
+                <div class="leaderboard__list--content leaderboard__title--score">Score</div>
+                <div class="leaderboard__list--content leaderboard__title--username">Username</div>
+            </li>
+        `);
 
         for (let i = 0; i < leaderboardName.length; i++) {
             $("#leaderboard").append(`<tr>

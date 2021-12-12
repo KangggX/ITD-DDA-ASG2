@@ -38,6 +38,10 @@ body {
 img {
   max-width: 100%; }
 
+a.box-link {
+  display: block;
+}
+
 a:focus,
 input:focus,
 textarea:focus,
