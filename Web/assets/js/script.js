@@ -24,6 +24,7 @@ import {
 
 const db = getDatabase();
 const playerRef = ref(db, "players");
+const leaderboardRef = ref(db, "leaderboard");
 
 //Working with Auth
 const auth = getAuth();
@@ -55,7 +56,11 @@ onAuthStateChanged(auth, (user) => {
 var leaderboardName = [];
 var leaderboardScore = [];
 
-onValue(playerRef, (snapshot) => {
+// onValue(playerRef, (snapshot) => {
+//     updateLeaderboard();
+// });
+
+onValue(leaderboardRef, (snapshot) => {
     updateLeaderboard();
 });
 
@@ -80,11 +85,15 @@ function retrieveLeaderboardData() {
 
     get(que).then((snapshot) => {
         if (snapshot.exists()) {
+            console.log(snapshot)
+            let index = 1;
+
             snapshot.forEach((childSnapshot) => {
-                console.log("hi");
+                
                 leaderboardName.push(childSnapshot.child("username").val());
                 leaderboardScore.push(childSnapshot.child("highestScore").val());
                 console.log(`Name: ${childSnapshot.child("username").val()}, Highest Score: ${childSnapshot.child("highestScore").val()}`);
+                index++;
             });
 
             console.log(leaderboardName);
@@ -96,38 +105,7 @@ function retrieveLeaderboardData() {
 
 function updateLeaderboard(){
     retrieveLeaderboardData();
-    // await retrieveLeaderboardData();
-    // retrieveLeaderboardData().then(console.log);
-
-    // get(playerRef).then((snapshot) => {//retrieve a snapshot of the data using a callback\
-    //     console.log(snapshot);
-    //     if (snapshot.exists()) {//if the data exist
-    //         console.log("yes");
-    //         try {
-    //             $("#leaderboard").empty(); // Clear leaderboard content first
-    //             $("#leaderboard").append(`<tr>
-    //                 <th>Rank</th>
-    //                 <th>Points</th>
-    //                 <th>Username</th>
-    //             </tr>`);
-
-    //             snapshot.forEach((childSnapshot) => {//looping through each snapshot
-    //                 //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
-
-    //                 console.log("GetPlayerData: childkey " + childSnapshot.key);
-
-    //                 $("#leaderboard").append(`<tr>
-    //                     <td>${childSnapshot.child("username").val()}</td>
-    //                     <td>${childSnapshot.child("highestScore").val()}</td>
-    //                     <td>${childSnapshot.child("username").val()}</td>
-    //                 </tr>`);
-    //             });
-    //         } catch(error) {
-    //             console.log("Error getPlayerData" + error);
-    //         }
-    //     }
-    // });
-
+    
     setTimeout(() => {
         $("#leaderboard").empty(); // Clear leaderboard content first
         $(".leaderboard__list").empty(); // Clear leaderboard content first

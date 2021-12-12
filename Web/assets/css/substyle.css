@@ -28,6 +28,10 @@ a:hover {
     background-color: #d72344;
 }
 
+a.red:hover, a.blue:hover {
+    color: #fff;
+}
+
 .body-margin {
     margin: 0 auto;
     width: 850px;
@@ -140,7 +144,7 @@ form .form-input {
     background-color: #fff;
     width: 100%;
     padding: 90px 45px;
-    flex-grow: 1;
+    /* flex-grow: 1; */
     flex-direction: column;
     align-items: center;
 }
@@ -202,7 +206,7 @@ form .form-input {
     font-weight: 600;
     text-transform: uppercase;
     pointer-events: none;
-    transition: 0.15s all ease-in-out;
+    transition: 0.3s all ease-in-out;
 }
 
 .field__input--email:focus + .field__label, .field__input--password:focus + .field__label, .field__input--username:focus + .field__label, .field__input--non-empty + .field__label {
@@ -223,7 +227,7 @@ form .form-input {
     border-radius: 3px;
     padding: 10px 120px;
     font-weight: 500;
-    transition: .15s all ease-in-out;
+    transition: 0.3s all ease-in-out;
 }
 
 .submission__button:disabled {

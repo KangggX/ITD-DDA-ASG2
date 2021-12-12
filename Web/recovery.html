@@ -19,7 +19,7 @@
     <body style="background-color: #2A2A2A; overflow-y: hidden;">
         <div>
             <div class="form form-container">
-                <div class="form__wrapper">
+                <div class="form__wrapper" id="recovery-form">
                     <div class="form__box in">
                         <div class="form__back" id="page-back">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20.958" height="18.241" viewBox="0 0 20.958 18.241">
@@ -31,7 +31,7 @@
                         </div>
 
                         <div class="form__title" style="margin-bottom: 45px;">
-                            <h2>Sign In</h2>
+                            <h2>Password Recovery</h2>
                         </div>
 
                         <div class="form__error">
@@ -40,20 +40,26 @@
 
                         <form autocomplete="off" class="field form__fields">
                             <div class="field__input" style="margin-bottom: 10px;">
-                                <input type="email" autocomplete="off" name="email" class="field__input--email" id="in__email" value="">
+                                <input type="email" autocomplete="off" name="email" class="field__input--email" id="recovery__email" value="">
                                 <label class="field__label">Email</label>
                             </div>
 
-                            <div class="field__input">
-                                <input type="password" name="password" class="field__input--password" id="in__password" value="">
-                                <label class="field__label">Password</label>
-                                <span class="field__error--first">Password must be at least 6 characters long</span>
-                            </div>
-
                             <div class="submission field__submit">
-                                <button class="submission__button red" id="in__submit" disabled>SIGN IN</button>
-                                <a href="signup.html" class="submission__label">DON'T HAVE AN ACCOUNT?</a>
-                                <a href="recovery.html" class="submission__label">FORGOT PASSWORD</a>
+                                <button class="submission__button red" id="recovery__submit" disabled>SUBMIT</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="form__wrapper" id="recovery-success" style="display: none;">
+                    <div class="form__box in">
+                        <div class="form__title" style="margin-bottom: 45px;">
+                            <h2>Email Sent Successfully</h2>
+                        </div>
+
+                        <form autocomplete="off" class="field form__fields">
+                            <div class="submission field__submit">
+                                <a class="submission__button red" href="index.html">BACK</a>
                             </div>
                         </form>
                     </div>

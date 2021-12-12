@@ -1,3 +1,6 @@
+/* 
+    Firebase Auth Imports
+*/
 import { 
     getAuth, 
     initializeAuth, 
@@ -6,9 +9,13 @@ import {
     onAuthStateChanged, signOut, 
     setPersistence, 
     browserLocalPersistence,
-    updateProfile
+    updateProfile,
+    sendPasswordResetEmail
 } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js";
 
+/* 
+    Firebase Database Imports
+*/
 import { 
     getDatabase, 
     ref,
@@ -30,10 +37,14 @@ const user = auth.currentUser;
 
 var signInEmail = $("#in__email");
 var signInPassword = $("#in__password");
+
 var signUpEmail = $("#up__email");
 var signUpName = $("#up__username");
 var signUpPassword1 = $("#up__password--1");
 var signUpPassword2 = $("#up__password--2");
+
+var recoveryEmail = $("#recovery__email");
+
 var usernameList = [];
 
 var isUsernameSimilar = false;
@@ -108,6 +119,15 @@ function signUpFormCheck() {
         $("#up__submit").prop("disabled", false);
         $(".field__error--first").css("display", "none");
         $(".field__error--second").css("display", "none");
+    }
+}
+
+function recoveryFormCheck() {
+    if (recoveryEmail.val() == "") {
+        $("#recovery__submit").prop("disabled", true);
+    }
+    else {
+        $("#recovery__submit").prop("disabled", false);
     }
 }
 
@@ -188,6 +208,23 @@ function userLogout() {
     });
 }
 
+
+// Function for user password recovery email
+function userRecovery(email) {
+    sendPasswordResetEmail(auth, email)
+    .then(() => {
+        console.log("Password Reset Email Sent Successfully!");
+        $("#recovery-form").css("display", "none");
+        $("#recovery-success").css("display", "flex");
+    })
+    .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log("User Recovery" + errorMessage);
+    })
+}
+
+// Create a new set of data in the database for newly registered users
 function createUserDatabase(email, username) {
     const key = push(playerRef);
     // const key = db.child("players").push().key;
@@ -228,7 +265,8 @@ signInEmail
 .add(signUpEmail)
 .add(signUpName)
 .add(signUpPassword1)
-.add(signUpPassword2).on("blur", function () {
+.add(signUpPassword2)
+.add(recoveryEmail).on("blur", function () {
     formCheck(this);
 });
 
@@ -246,6 +284,11 @@ signUpEmail
     signUpFormCheck();
 });
 
+// On blur with these IDs, run the recoveryFormCheck() function
+recoveryEmail.on("blur", function () {
+    recoveryFormCheck();
+});
+
 $("#in__submit").click(function (e) {
     e.preventDefault();
     userLogin();
@@ -254,6 +297,11 @@ $("#in__submit").click(function (e) {
 $("#up__submit").click(function (e) {
     e.preventDefault();
     userRegister(signUpName.val());
+})
+
+$("#recovery__submit").click(function (e) {
+    e.preventDefault();
+    userRecovery(recoveryEmail.val());
 })
 
 $("#out").on("click", function (e) {
