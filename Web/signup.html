@@ -16,7 +16,7 @@
        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
 
-    <body style="background-color: #2A2A2A;">
+    <body style="background-color: #2A2A2A; overflow-y: hidden;">
         <div>
             <div class="form form-container">
                 <div class="form__wrapper">
@@ -32,6 +32,10 @@
 
                         <div class="form__title" style="margin-bottom: 40px;">
                             <h2>Sign Up</h2>
+                        </div>
+
+                        <div class="form__error">
+                            <span>The email or password you have entered is incorrect, or you do not have any exisiting account.</span>
                         </div>
 
                         <form autocomplete="off" class="field form__fields">
@@ -58,7 +62,7 @@
                             </div>
 
                             <div class="submission field__submit">
-                                <button class="submission__button red" id="up__submit">SIGN UP</button>
+                                <button class="submission__button red" id="up__submit" disabled>SIGN UP</button>
                                 <a href="signin.html" class="submission__label">ALREADY HAVE AN ACCOUNT?</a>
                             </div>
                         </form>

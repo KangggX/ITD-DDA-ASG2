@@ -122,7 +122,9 @@
                                 </ul> <!-- navbar nav -->
                             </div>
                             <div class="navbar-btn ml-20 d-none d-sm-block">
-                                <a class="main-btn" href="signup.html"> Sign up </a>
+                                <span id="username" style="display: none;"></span>
+                                <a class="main-btn" id="in" href="signin.html"> Sign in </a>
+                                <button class="main-btn" id="out" style="display: none;">SIGN OUT</button>
                             </div>
                         </nav> <!-- navbar -->
                     </div>
@@ -528,6 +530,9 @@
     <!--====== Main js ======-->
     <script src="assets/js/main.js"></script>
 
+    <!--====== Config & Auth js ======-->
+    <script type="module" src="/assets/js/config.js"></script>
+    <script type="module" src="/assets/js/auth.js"></script>
 </body>
 
 </html>

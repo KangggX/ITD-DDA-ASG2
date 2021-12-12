@@ -1,8 +1,26 @@
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 // Import the functions you need from the SDKs you need
-import { getAuth, initializeAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js";
-import { getDatabase, ref, child, push, get, set, onValue, orderByChild, orderByKey, query } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-database.js";
+import { 
+    getAuth, 
+    initializeAuth, 
+    createUserWithEmailAndPassword, 
+    signInWithEmailAndPassword,
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js";
+
+import { 
+    getDatabase, 
+    ref, 
+    child, 
+    push,
+    get, 
+    set, 
+    onValue, 
+    orderByChild, 
+    orderByKey, 
+    query
+} from "https://www.gstatic.com/firebasejs/9.5.0/firebase-database.js";
 
 const db = getDatabase();
 const playerRef = ref(db, "players");
@@ -21,7 +39,18 @@ var playerData = {
     averageAccuracy: 100
 }
 
-console.log(user);
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/firebase.User
+      const uid = user.uid;
+      console.log(user.email);
+      // ...
+    } else {
+      // User is signed out
+      // ...
+    }
+});
 
 var leaderboardName = [];
 var leaderboardScore = [];
