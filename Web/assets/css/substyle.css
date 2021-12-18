@@ -48,6 +48,76 @@ form .form-input {
 }
 
 /*===========================
+    Navbar styling
+===========================*/
+.dropdown-user {
+    position: relative;
+    color: white;
+    background-color: #eb3656;
+    border-radius: 8px;
+}
+
+.dropdown-user:hover .dropdown-user__menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0px);
+}
+
+.dropdown-user:hover #username svg {
+    transform: rotate(180deg);
+}
+
+.dropdown-user #username {
+    margin: 6px 20px;
+    padding-right: 20px;
+    cursor: pointer;
+}
+
+#username {
+    position: relative;
+}
+
+#username svg {
+    display: block;
+    position: absolute;
+    fill: #fff;
+    top: 45%;
+    right: 0;
+    transition: .2s all ease-in-out;
+}
+
+.dropdown-user__menu {
+    position: absolute;
+    display: block;
+    background-color: #EB3656;
+    border-radius: 5px;
+    padding: 5px 0;
+    opacity: 0;
+    visibility: hidden;
+    top: 45px;
+    right: 0;
+    transform: translateY(-3px);
+    transition: 0.2s all ease-in-out;
+}
+
+.dropdown-user__menu div a {
+    display: block;
+    width: 200px;
+    margin: 10px 15px;
+    cursor: pointer;
+}
+
+.dropdown-user__menu div a p {
+    color: #fff;
+    border-radius: 6px;
+    padding: 0 10px;
+}
+
+.dropdown-user__menu div a p:hover {
+    background-color: rgba(128, 128, 128, 0.3);
+}
+
+/*===========================
     Leaderboard styling
 ===========================*/
 #leaderboard th, td {
@@ -64,7 +134,7 @@ form .form-input {
 }
 
 .leaderboard {
-    width: 550px;
+    width: 750px;
     margin: 0 auto;
     font-family: "Electrolize", sans-serif;
 }
@@ -82,8 +152,19 @@ form .form-input {
 
 .leaderboard__list li:not(:first-child) {
     background-color: #c0c0c0;
-    border-bottom: 3px solid #363636;
     height: 70px;
+}
+
+.leaderboard__list li:not(:first-child):not(:last-child) {
+    border-bottom: 3px solid #363636;
+}
+
+.leaderboard__list li:nth-child(2) {
+    border-radius: 15px 15px 0 0;
+}
+
+.leaderboard__list li:last-child {
+    border-radius: 0 0 15px 15px;
 }
 
 .leaderboard__list--content {
@@ -102,17 +183,17 @@ form .form-input {
 
 .leaderboard--ranking,
 .leaderboard__title--ranking {
-    width: 25%;
+    width: 15%;
 }
 
 .leaderboard--score,
 .leaderboard__title--score {
-    width: 25%;
+    width: 30%;
 }
 
 .leaderboard--username,
 .leaderboard__title--username {
-    width: 50%;
+    width: 55%;
 }
 
 /*===========================
@@ -231,7 +312,7 @@ form .form-input {
 }
 
 .submission__button:disabled {
-    background-color: #a1a1ab;
+    background-color: hsl(240, 6%, 70%);
 }
 
 .submission__label {
@@ -250,5 +331,9 @@ form .form-input {
 @media (min-width: 960px) {
     .form-container {
         max-width: 720px;
+    }
+
+    .leaderboard {
+        width: 750px;
     }
 }

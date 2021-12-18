@@ -38,7 +38,7 @@
 
     <!--====== Style css ======-->
     <link rel="stylesheet" href="assets/css/style.css">
-
+    <link rel="stylesheet" href="assets/css/substyle.css">        
 
 </head>
 
@@ -122,9 +122,25 @@
                                 </ul> <!-- navbar nav -->
                             </div>
                             <div class="navbar-btn ml-20 d-none d-sm-block">
-                                <span id="username" style="display: none;"></span>
                                 <a class="main-btn" id="in" href="signin.html"> Sign in </a>
-                                <button class="main-btn" id="out" style="display: none;">SIGN OUT</button>
+                                <!-- <button class="main-btn" id="out" style="display: none;">SIGN OUT</button> -->
+                                <div class="dropdown-user" id="userbar">
+                                    <div id="username">
+                                        <svg width="8" height="5" viewBox="0 0 8 5" class="arrow-down" xmlns="http://www.w3.org/2000/svg"><path d="M0.707109 1.70711L3.29289 4.29289C3.68342 4.68342 4.31658 4.68342 4.70711 4.29289L7.29289 1.70711C7.92286 1.07714 7.47669 0 6.58579 0H1.41421C0.523309 0 0.0771438 1.07714 0.707109 1.70711Z"></path></svg>
+                                    </div>
+                                    <div class="dropdown-user__menu">
+                                        <div>
+                                            <a href="profile.html">
+                                                <p>View Profile</p>
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <a id="out">
+                                                <p>Sign Out</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </nav> <!-- navbar -->
                     </div>

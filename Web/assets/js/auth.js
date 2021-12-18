@@ -64,16 +64,19 @@ onAuthStateChanged(auth, (user) => {
     if (user) {
         // User is signed in.
         $("#in").css("display", "none");
-        $("#out").css("display", "initial");
-        $("#username").css("display", "initial");
-        $("#username").text(user.displayName);
+        $("#out").css("display", "block");
+        $("#userbar").css("display", "inline-block");
+        $("#username").html(`
+        ${user.displayName}
+        <svg width="8" height="5" viewBox="0 0 8 5" class="arrow-down" xmlns="http://www.w3.org/2000/svg"><path d="M0.707109 1.70711L3.29289 4.29289C3.68342 4.68342 4.31658 4.68342 4.70711 4.29289L7.29289 1.70711C7.92286 1.07714 7.47669 0 6.58579 0H1.41421C0.523309 0 0.0771438 1.07714 0.707109 1.70711Z"></path></svg>
+        `);
         
         console.log(user.displayName);
     } else {
         // No user is signed in.
         $("#in").css("display", "inline-block");
         $("#out").css("display", "none");
-        $("#username").css("display", "none");
+        $("#userbar").css("display", "none");
 
         console.log("Not signed in");
     }
@@ -182,7 +185,7 @@ function userRegister(username) {
                     displayName: username
                 }).then(() => {
                     console.log("Display name set successfully!");
-                    // location.href = "index.html";
+                    location.href = "index.html";
                 }).catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
@@ -208,7 +211,6 @@ function userLogout() {
     });
 }
 
-
 // Function for user password recovery email
 function userRecovery(email) {
     sendPasswordResetEmail(auth, email)
@@ -227,7 +229,7 @@ function userRecovery(email) {
 // Create a new set of data in the database for newly registered users
 function createUserDatabase(email, username) {
     const key = push(playerRef);
-    // const key = db.child("players").push().key;
+
     playerData.email = email;
     playerData.username = username;
 
@@ -306,8 +308,4 @@ $("#recovery__submit").click(function (e) {
 
 $("#out").on("click", function (e) {
     userLogout();
-});
-
-$("#page-back").click(function () {
-    location.href = "index.html";
 });
