@@ -15,8 +15,16 @@ public class InteractableHighlight : MonoBehaviour
         {
             renderer.material.EnableKeyword("_EMISSION");
         }
+        print("interect");
     }
-
+    public void checkActive()
+    {
+        print("checking if on trigger act");
+    }
+    public void selectActive()
+    {
+        print("chekcking select act");
+    }
     //This will use the emission property to stop highlighting the object
     public void ExitHover()
     {
@@ -28,5 +36,6 @@ public class InteractableHighlight : MonoBehaviour
         {
             renderer.material.DisableKeyword("_EMISSION");
         }
+        print("inter");
     }
 }
