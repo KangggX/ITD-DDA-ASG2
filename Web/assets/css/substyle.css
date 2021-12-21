@@ -197,6 +197,11 @@ form .form-input {
 }
 
 /*===========================
+    Player Profile styling
+===========================*/
+
+
+/*===========================
     Sign In/Sign Up styling
 ===========================*/
 .form {
@@ -238,10 +243,25 @@ form .form-input {
     cursor: pointer;
 }
 
+.form__back2 {
+    position: relative;
+    top: -280px;
+    left: -650px;
+    cursor: pointer;
+}
+
 .form__title h2 {
     color: #111111;
     font-size: 32px;
     font-weight: 600;
+}
+
+.form__title2{
+    position: absolute;
+    color: #111111;
+    font-size: 32px;
+    font-weight: 600;
+    top: -100%;
 }
 
 .form__error, .field__error--first, .field__error--second {
@@ -354,6 +374,29 @@ form .form-input {
     position: absolute;
     margin-right: -110%;
     margin-top: 50%
+}
+
+.s1-bgimg2 {
+    position: absolute;
+    margin-left: -175%;
+    margin-top: -44%;
+}
+
+.s2-bgimg2 {
+    position: absolute;
+    margin-right: -100%;
+}
+
+.s3-bgimg2 {
+    position: absolute;
+    margin-left: -80%;
+    margin-top: 20%
+}
+
+.s4-bgimg2 {
+    position: absolute;
+    margin-right: -110%;
+    margin-top: 30%
 }
 
 /*===========================
