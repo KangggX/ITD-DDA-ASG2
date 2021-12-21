@@ -71,8 +71,8 @@ function retrieveLeaderboardData() {
 
     get(que).then((snapshot) => {
         if (snapshot.exists()) {
-            console.log(snapshot.size)
-            remove(leaderboardRef); // Delete current leaderboard data in Database
+            // console.log(snapshot.size)
+            //remove(leaderboardRef); // Delete current leaderboard data in Database
 
             let index = snapshot.size;
             let position;
@@ -97,6 +97,8 @@ function retrieveLeaderboardData() {
                 leaderboardData.highestScore = childSnapshot.child("highestScore").val();
 
                 set(ref(db, "leaderboard/" + index), leaderboardData); // Pushing new data into Database
+                // update(ref(db), {["/leaderboard/" + index]: leaderboardData})
+
                 index--;
             });
         }
@@ -123,7 +125,8 @@ function updateLeaderboard(){
         get(leaderboardRef).then((snapshot) => {
             if (snapshot.exists()) {
                 snapshot.forEach((childSnapshot) => {
-                    console.log(childSnapshot.val());
+                    // console.log(childSnapshot.val());
+                    
                     $(".leaderboard__list").append(`<li>
                         <div class="leaderboard__list--content leaderboard--ranking">${childSnapshot.key}</div>
                         <div class="leaderboard__list--content leaderboard--score">${childSnapshot.child("highestScore").val()}</div>
