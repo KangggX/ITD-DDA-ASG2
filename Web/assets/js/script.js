@@ -34,16 +34,20 @@ const user = auth.currentUser;
 
 var leaderboardData = {
     username: "",
-    highestScore: 0
+    fastestTime: 0
 }
+
+var key;
+
+var tempLeaderboardArray = [];
 
 onAuthStateChanged(auth, (user) => {
     if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/firebase.User
-      const uid = user.uid;
-      console.log(user.email);
-      // ...
+        const uid = user.uid;
+        $("#usernameDetail").text(`${user.displayName}`);
+        $("#emailDetail").text(`${user.email}`);
+        
+        updateProfilePage(user.displayName);
     } else {
       // User is signed out
       // ...
@@ -67,15 +71,17 @@ function leaderboardUpdater() {
 }
 
 function retrieveLeaderboardData() {
-    const que = query(playerRef, orderByChild("highestScore"));
+    const que = query(playerRef, orderByChild("fastestTime"));
 
     get(que).then((snapshot) => {
         if (snapshot.exists()) {
             // console.log(snapshot.size)
             //remove(leaderboardRef); // Delete current leaderboard data in Database
 
-            let index = snapshot.size;
+            let index = 1;
             let position;
+
+            tempLeaderboardArray = [];
 
             snapshot.forEach((childSnapshot) => {
                 if (index == 1) {
@@ -94,12 +100,14 @@ function retrieveLeaderboardData() {
                 update(ref(db), {["/players/" + childSnapshot.key + "/leaderboardPosition"]: position});
 
                 leaderboardData.username = childSnapshot.child("username").val();
-                leaderboardData.highestScore = childSnapshot.child("highestScore").val();
+                leaderboardData.fastestTime = childSnapshot.child("fastestTime").val();
 
+                
                 set(ref(db, "leaderboard/" + index), leaderboardData); // Pushing new data into Database
-                // update(ref(db), {["/leaderboard/" + index]: leaderboardData})
-
-                index--;
+                
+                index++;
+                
+                tempLeaderboardArray.push({key: childSnapshot.key, username: childSnapshot.child("username").val(), fastestTime: childSnapshot.child("fastestTime").val()});
             });
         }
     });
@@ -116,7 +124,7 @@ function updateLeaderboard(){
         $(".leaderboard__list").append(`
             <li>
                 <div class="leaderboard__list--content leaderboard__title--ranking">Ranking</div>
-                <div class="leaderboard__list--content leaderboard__title--score">Score</div>
+                <div class="leaderboard__list--content leaderboard__title--score">Time (MM:SS)</div>
                 <div class="leaderboard__list--content leaderboard__title--username">Username</div>
             </li>
         `);
@@ -129,7 +137,7 @@ function updateLeaderboard(){
                     
                     $(".leaderboard__list").append(`<li>
                         <div class="leaderboard__list--content leaderboard--ranking">${childSnapshot.key}</div>
-                        <div class="leaderboard__list--content leaderboard--score">${childSnapshot.child("highestScore").val()}</div>
+                        <div class="leaderboard__list--content leaderboard--score">${convertHMS(childSnapshot.child("fastestTime").val())}</div>
                         <div class="leaderboard__list--content leaderboard--username">${childSnapshot.child("username").val()}</div>
                     </li>`)
                 })
@@ -139,5 +147,73 @@ function updateLeaderboard(){
             }
         });
     }, 100);
+}
+
+// Converts seconds to HH:MM:SS
+// Modified to convert to MM:SS instead and a check to see if timing is N/A
+// Courtesy of: https://www.codegrepper.com/code-examples/javascript/convert+seconds+to+hours+minutes+seconds+javascript
+function convertHMS(value) {
+    const sec = parseInt(value, 10); // convert value to number if it's string
     
+    let result;
+    let hours   = Math.floor(sec / 3600); // get hours
+    let minutes = Math.floor((sec - (hours * 3600)) / 60); // get minutes
+    let seconds = sec - (hours * 3600) - (minutes * 60); //  get seconds
+    // add 0 if value < 10; Example: 2 => 02
+    if (hours   < 10) {hours   = "0"+hours;}
+    if (minutes < 10) {minutes = "0"+minutes;}
+    if (seconds < 10) {seconds = "0"+seconds;}
+    // return hours+':'+minutes+':'+seconds; // Return is HH : MM : SS
+
+    result = minutes+':'+seconds;
+
+    // Check if initial value input is N/A
+    // if it is indeed N/A, make sure to return "N/A" instead of "NaN:NaN"
+    if (result == "NaN:NaN") {
+        return "N/A"
+    }
+    else {
+        return minutes+':'+seconds; // Return is MM : SS
+    }
+}
+
+function updateProfilePage(username) {
+    getKey(username);
+
+    setTimeout(() => {
+        
+
+        get(ref(db, "players/" + key)).then((snapshot) => {
+            if (snapshot.exists()) {
+                console.log(snapshot.val())
+                $("#leaderboardPositionDetail").text(`${snapshot.child("leaderboardPosition").val()}`);
+                $("#fastestTimeDetail").text(`${snapshot.child("fastestTime").val()}`);
+                $("#totalTimeDetail").text(`${snapshot.child("totalTime").val()}`);
+                $("#totalGameDetail").text(`${snapshot.child("totalGame").val()}`);
+            }
+            else {
+
+            }
+        });
+    }, 500);
+}
+
+function getKey(username) {
+    get(playerRef).then((snapshot) => {
+        if (snapshot.exists()) {
+            try {
+                snapshot.forEach((childSnapshot) => {
+                    if (username == childSnapshot.child("username").val()) {
+                        key = childSnapshot.key;
+                        console.log(key);
+
+                        return;
+                    }
+                });
+            }
+            catch(error) {
+                console.log("Error getKey" + error);
+            }
+        }
+    });
 }
