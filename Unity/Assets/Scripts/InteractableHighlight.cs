@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InteractableHighlight : MonoBehaviour
 {
+    public Rigidbody cubee;
     //This will use the emission property to highlight the object
     public void OnHover()
     {
@@ -15,10 +16,12 @@ public class InteractableHighlight : MonoBehaviour
         {
             renderer.material.EnableKeyword("_EMISSION");
         }
-        print("interect");
+            
+
     }
     public void checkActive()
     {
+
         print("checking if on trigger act");
     }
     public void selectActive()
