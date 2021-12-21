@@ -14,6 +14,7 @@ import {
     ref, 
     child, 
     push,
+    update,
     get, 
     set, 
     onValue, 
@@ -49,25 +50,55 @@ onAuthStateChanged(auth, (user) => {
     }
 });
 
-onValue(playerRef, (snapshot) => {
+// onValue(playerRef, () => {
+//     updateLeaderboard();
+// });
+
+leaderboardUpdater();
+
+// Updates leaderboard every 10 seconds
+// Credits: https://stackoverflow.com/questions/7188145/call-a-javascript-function-every-5-seconds-continuously
+function leaderboardUpdater() {
     updateLeaderboard();
-});
+
+    setInterval(function() {
+        updateLeaderboard();
+    }, 10000); // Every 1000 is 1 second
+}
 
 function retrieveLeaderboardData() {
     const que = query(playerRef, orderByChild("highestScore"));
 
     get(que).then((snapshot) => {
         if (snapshot.exists()) {
-            console.log(snapshot.size)
-            remove(leaderboardRef); // Delete current leaderboard data in Database
+            // console.log(snapshot.size)
+            //remove(leaderboardRef); // Delete current leaderboard data in Database
 
             let index = snapshot.size;
+            let position;
 
             snapshot.forEach((childSnapshot) => {
+                if (index == 1) {
+                    position = "1st";
+                }
+                else if (index == 2) {
+                    position = "2nd";
+                }
+                else if (index == 3) {
+                    position = "3rd"
+                }
+                else {
+                    position = index + "th"
+                }
+
+                update(ref(db), {["/players/" + childSnapshot.key + "/leaderboardPosition"]: position});
+
                 leaderboardData.username = childSnapshot.child("username").val();
                 leaderboardData.highestScore = childSnapshot.child("highestScore").val();
 
                 set(ref(db, "leaderboard/" + index), leaderboardData); // Pushing new data into Database
+                // update(ref(db), {["/leaderboard/" + index]: leaderboardData})
+
                 index--;
             });
         }
@@ -78,14 +109,8 @@ function updateLeaderboard(){
     retrieveLeaderboardData();
     
     setTimeout(() => {
-        $("#leaderboard").empty(); // Clear leaderboard content first
-        $(".leaderboard__list").empty(); // Clear leaderboard content first
-        
-        $("#leaderboard").append(`<tr>
-            <th>Rank</th>
-            <th>Points</th>
-            <th>Username</th>
-        </tr>`);
+        // Clear leaderboard content first
+        $(".leaderboard__list").empty();
 
         // Appending header
         $(".leaderboard__list").append(`
@@ -100,7 +125,8 @@ function updateLeaderboard(){
         get(leaderboardRef).then((snapshot) => {
             if (snapshot.exists()) {
                 snapshot.forEach((childSnapshot) => {
-                    console.log(childSnapshot.val());
+                    // console.log(childSnapshot.val());
+                    
                     $(".leaderboard__list").append(`<li>
                         <div class="leaderboard__list--content leaderboard--ranking">${childSnapshot.key}</div>
                         <div class="leaderboard__list--content leaderboard--score">${childSnapshot.child("highestScore").val()}</div>

@@ -197,6 +197,19 @@ form .form-input {
 }
 
 /*===========================
+    Player Profile styling
+===========================*/
+.profile-box {
+    text-align: center;
+    border-radius: 20px;
+}
+
+.account-detail__username, .account-detail__email {
+    text-align: left;
+    margin: 25px 0;
+}
+
+/*===========================
     Sign In/Sign Up styling
 ===========================*/
 .form {
