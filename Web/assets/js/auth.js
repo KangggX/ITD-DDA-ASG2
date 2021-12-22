@@ -65,7 +65,7 @@ onAuthStateChanged(auth, (user) => {
     if (user) {
         // User is signed in.
         $("#in").css("display", "none");
-        $("#out").css("display", "block");
+        $("#out").css("display", "initial");
         $("#userbar").css("display", "inline-block");
         $("#username").html(`
         ${user.displayName}
@@ -205,6 +205,7 @@ function userRegister(username) {
 function userLogout() {
     signOut(auth).then(() => {
         // Sign-out successful.
+        location.href = "index.html";
     }).catch((error) => {
         // An error happened.
     });
