@@ -6,5 +6,13 @@ public class offsetGrab : XRGrabInteractable
     private Vector3 interactorPos = Vector3.zero;
     private Quaternion interactorRot = Quaternion.identity;
     // Start is called before the first frame update
-    
+
+    protected override void OnSelectEntered(XRBaseInteractor interactor)
+    {
+        
+    }
+    protected override void OnSelectExited(XRBaseInteractor interactor)
+    {
+        
+    }
 }
