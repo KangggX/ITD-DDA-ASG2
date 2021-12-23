@@ -3018,7 +3018,7 @@ GameObject:
   - component: {fileID: 1108220346}
   - component: {fileID: 1108220345}
   - component: {fileID: 1108220344}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3922,6 +3922,8 @@ GameObject:
   - component: {fileID: 1450394407}
   - component: {fileID: 1450394409}
   - component: {fileID: 1450394408}
+  - component: {fileID: 1450394411}
+  - component: {fileID: 1450394410}
   m_Layer: 0
   m_Name: XR Origin (1)
   m_TagString: Untagged
@@ -3944,7 +3946,7 @@ MonoBehaviour:
   m_Camera: {fileID: 97872491}
   m_OriginBaseGameObject: {fileID: 1450394404}
   m_CameraFloorOffsetObject: {fileID: 1341258643}
-  m_RequestedTrackingOriginMode: 0
+  m_RequestedTrackingOriginMode: 1
   m_CameraYOffset: 1.1176
 --- !u!4 &1450394406
 Transform:
@@ -4007,8 +4009,68 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   inputSource: 4
+  gravity: -9.81
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  additionalHeight: 0.2
   rig: {fileID: 0}
   playerCamera: {fileID: 97872491}
+--- !u!114 &1450394410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450394404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2213c36610e3b1c4bbf886810ed9db12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_System: {fileID: 0}
+  m_TurnAmount: 2
+  m_DebounceTime: 0.001
+  m_EnableTurnLeftRight: 1
+  m_EnableTurnAround: 1
+  m_LeftHandSnapTurnAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Left Hand Snap Turn
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: a311be29-3a4e-4338-b3ff-92a92328edc9
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -6493913391331992944, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_RightHandSnapTurnAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Right Hand Snap Turn
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: c6e8527d-79e4-49d6-a6ea-5068e6ee7536
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+--- !u!114 &1450394411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450394404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a5df2202a8b96488c744be3bd0c33e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Timeout: 10
+  m_XROrigin: {fileID: 0}
 --- !u!1 &1561642389
 GameObject:
   m_ObjectHideFlags: 0
