@@ -13,16 +13,17 @@ public class SimpleFirebaseManager : MonoBehaviour
     DatabaseReference dbPlayerStatsReference;
     DatabaseReference dbPlayerLeaderboardReference;
 
+    AuthManager authMgr;
+
     private void Awake()
     {
         InitializeFirebase();
-        
     }
 
     public void InitializeFirebase()
     {
-        dbPlayerStatsReference = FirebaseDatabase.DefaultInstance.GetReference("playerStats");
-        dbPlayerLeaderboardReference = FirebaseDatabase.DefaultInstance.GetReference("leaderboards");
+        dbPlayerStatsReference = FirebaseDatabase.DefaultInstance.GetReference("players");
+        dbPlayerLeaderboardReference = FirebaseDatabase.DefaultInstance.GetReference("leaderboard");
     }
 
     public void UpdatePlayerStats(string uuid, int score, int xp, string displayname)
@@ -60,10 +61,10 @@ public class SimpleFirebaseManager : MonoBehaviour
                     sp.updatedOn = sp.GetTimeUnix();
                     //Check if there is a new highscore
                     //Update leaderboard if there is a new highscore
-                    if (score > sp.highscore)
+                    if (score > sp.fastestTime)
                     {
-                        sp.highscore = score;
-                        UpdatePlayerLeaderboardEntry(uuid, sp.highscore, sp.updatedOn);
+                        sp.fastestTime = score;
+                        UpdatePlayerLeaderboardEntry(uuid, sp.fastestTime, sp.updatedOn);
                         Debug.Log("highscore updated!");
 
                     }
@@ -91,19 +92,19 @@ public class SimpleFirebaseManager : MonoBehaviour
        // FirebaseDatabase.DefaultInstance.GoOffline();
     }
 
-    public void UpdatePlayerLeaderboardEntry(string uuid, int highscore, long updatedOn)
+    public void UpdatePlayerLeaderboardEntry(string uuid, int fastestTime, long updatedOn)
     {
         //Update specific single entries
 
         //leaderboards/$uuid/highscore
         //leaderboards/$uuid/updatedOn
-        dbPlayerLeaderboardReference.Child(uuid).Child("highscore").SetValueAsync(highscore);
+        dbPlayerLeaderboardReference.Child(uuid).Child("fastestTime").SetValueAsync(fastestTime);
         dbPlayerLeaderboardReference.Child(uuid).Child("updatedOn").SetValueAsync(updatedOn);
     }
 
     public async Task<List<SimpleLeaderboard>> GetLeaderboard(int limit = 5)
     {
-        Query q = dbPlayerLeaderboardReference.OrderByChild("highscore").LimitToLast(limit);
+        Query q = dbPlayerLeaderboardReference.OrderByChild("fastestTime").LimitToLast(limit);
         List<SimpleLeaderboard> leaderboardList = new List<SimpleLeaderboard>();
 
         await q.GetValueAsync().ContinueWithOnMainThread(task =>
@@ -127,13 +128,12 @@ public class SimpleFirebaseManager : MonoBehaviour
 
                         //Add item to list 
                         leaderboardList.Add(lb);
-                        Debug.LogFormat("Leaderboard: Rank {0} Playername {1} Highscore {2}", rankCounter, lb.displayname, lb.highscore);
+                        Debug.LogFormat("Leaderboard: Rank {0} Playername {1} Highscore {2}", rankCounter, lb.displayname, lb.fastestTime);
                     }
-                    leaderboardList.Reverse();
                     //For each simpleleaderboard obj inside leaderboard list
                     foreach (SimpleLeaderboard lb in leaderboardList)
                     {
-                        Debug.LogFormat("Leaderboard: Rank {0} Playername {1} Highscore {2}", rankCounter, lb.displayname, lb.highscore);
+                        Debug.LogFormat("Leaderboard: Rank {0} Playername {1} Highscore {2}", rankCounter, lb.displayname, lb.fastestTime);
                         rankCounter++;
                     }    
                 }

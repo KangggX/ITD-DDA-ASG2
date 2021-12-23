@@ -203,7 +203,7 @@ form .form-input {
     background-color: #fff;
     text-align: center;
     border-radius: 20px;
-    padding: 25px 0;
+    padding: 20px 25px;
     box-shadow: 0 0 30px 0px #dadada;
 }
 
@@ -224,15 +224,15 @@ form .form-input {
 .setting-button {
     display: block !important;
     color: #fff !important;
-    width: 250px;
+    width: 100%;
     border-radius: 5px;
     padding: 10px 0;
     cursor: pointer;
     transition: 0.2s all ease-in-out;
 }
 
-.setting-button:first-child {
-    margin-bottom: 10px;
+.profile-box__body .setting-button {
+    width: 100%;
 }
 
 /*===========================

@@ -45,7 +45,7 @@ public class SimplePlayerStatsManager : MonoBehaviour
         if(playerStats != null)
         {
             playerXP.text = playerStats.xp + "XP";
-            highscore.text = playerStats.highscore.ToString();
+            highscore.text = playerStats.fastestTime.ToString();
             lastPlayed.text = UnixToDateTime(playerStats.updatedOn);
             playerName.text = auth.GetCurrentUserDisplayName();
         }
