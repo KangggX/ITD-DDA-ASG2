@@ -12,18 +12,19 @@ public class ScrewInteract : MonoBehaviour
     public Animator ScrewAni;
     private void Start()
     {
-        targetValue = 360;
+        targetValue = 1440
+            ;
         previousRotation = 0;
         currentRotation = transform.eulerAngles.z;
     }
 
     private void Update()
     {
-        if ( score == 1 )
+        if (score == 2)
         {
             ScrewAni.SetBool("Screwing", true);
             print("anime play");
-            this.gameObject.active = false;
+            this.gameObject.SetActive(false);
         }
     }
 
