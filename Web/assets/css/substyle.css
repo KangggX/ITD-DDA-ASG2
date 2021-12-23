@@ -203,14 +203,15 @@ form .form-input {
     background-color: #fff;
     text-align: center;
     border-radius: 20px;
-    padding: 20px 25px;
+    padding: 30px 25px;
     box-shadow: 0 0 30px 0px #dadada;
 }
 
 .profile-box__body {
     display: flex;
     flex-direction: column;
-    margin: 15px 0;
+    font-family: "Electrolize", sans-serif;
+    margin-top: 20px;
 }
 
 .profile-box__body h4, .profile-box__body p {
