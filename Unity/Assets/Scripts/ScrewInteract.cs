@@ -23,6 +23,7 @@ public class ScrewInteract : MonoBehaviour
         {
             ScrewAni.SetBool("Screwing", true);
             print("anime play");
+            this.gameObject.active = false;
         }
     }
 
