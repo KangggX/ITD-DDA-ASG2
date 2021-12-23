@@ -3582,6 +3582,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   inputSource: 4
+  rig: {fileID: 0}
+  playerCamera: {fileID: 97872491}
 --- !u!114 &1450394410
 MonoBehaviour:
   m_ObjectHideFlags: 0
