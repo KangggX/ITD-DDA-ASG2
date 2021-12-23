@@ -7,7 +7,7 @@ public class SimplePlayerStats
 {
 
     public string displayname;
-    public int highscore;
+    public int fastestTime;
     public int xp;
     public long updatedOn;
     public long createdOn;
@@ -18,10 +18,10 @@ public class SimplePlayerStats
 
     }
 
-    public SimplePlayerStats(string displayname, int highscore, int xp = 0)
+    public SimplePlayerStats(string displayname, int fastestTime, int xp = 0)
     {
         this.displayname = displayname;
-        this.highscore = highscore;
+        this.fastestTime = fastestTime;
         this.xp = xp;
 
         var timestamp = this.GetTimeUnix();

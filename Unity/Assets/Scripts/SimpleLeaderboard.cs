@@ -6,7 +6,7 @@ using System;
 public class SimpleLeaderboard
 {
     public string displayname;
-    public int highscore;
+    public int fastestTime;
     public long updatedOn;
     
     //Constructor
@@ -15,10 +15,10 @@ public class SimpleLeaderboard
 
     }
 
-    public SimpleLeaderboard(string displayname, int highscore)
+    public SimpleLeaderboard(string displayname, int fastestTime)
     {
         this.displayname = displayname;
-        this.highscore = highscore;
+        this.fastestTime = fastestTime;
         this.updatedOn = GetTimeUnix();
     }
 

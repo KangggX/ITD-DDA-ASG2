@@ -28,7 +28,7 @@ public class MenuManager : MonoBehaviour
     {
         playTransition = true;
         AudioClipManager.PlaySound("button");
-        SceneManager.LoadScene(6);
+        SceneManager.LoadScene(4);
     }
 
     public void QuitGame()
@@ -41,13 +41,13 @@ public class MenuManager : MonoBehaviour
     {
         ppTransition = true;
         //AudioClipManager.PlaySound("button");
-        SceneManager.LoadScene(6);
+        SceneManager.LoadScene(3);
     }
 
     public void Leaderboard()
     {
         leaderboardTransition = true;
         AudioClipManager.PlaySound("button");
-        SceneManager.LoadScene(6);
+        SceneManager.LoadScene(2);
     }
 }

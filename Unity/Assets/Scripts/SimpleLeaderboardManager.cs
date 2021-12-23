@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System;
 
 
 public class SimpleLeaderboardManager : MonoBehaviour
@@ -37,14 +38,15 @@ public class SimpleLeaderboardManager : MonoBehaviour
         //Assign each value from list to the prefab text content
         foreach (SimpleLeaderboard lb in leaderboardList)
         {
-            Debug.LogFormat("Leaderboard: Rank {0} Playername {1} Highscore {2}", rankCounter, lb.displayname, lb.highscore);
+            Debug.LogFormat("Leaderboard: Rank {0} Playername {1} Highscore {2}", rankCounter, lb.displayname, lb.fastestTime);
 
             //Create prefabs in the position of tableContents
             GameObject entry = Instantiate(rowPrefab, tableContents);
             TextMeshProUGUI[] leaderboardDetails = entry.GetComponentsInChildren<TextMeshProUGUI>();
             leaderboardDetails[0].text = rankCounter.ToString();
             leaderboardDetails[1].text = lb.displayname;
-            leaderboardDetails[2].text = lb.highscore.ToString();
+            TimeSpan t = TimeSpan.FromSeconds(lb.fastestTime);
+            leaderboardDetails[2].text = t.Minutes.ToString() + ":" + t.Seconds.ToString();
 
             rankCounter++;
         }

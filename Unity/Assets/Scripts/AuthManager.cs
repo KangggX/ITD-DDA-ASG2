@@ -57,7 +57,7 @@ public class AuthManager: MonoBehaviour
                 await UpdatePlayerDisplayName(username);
                 authTransition = true;
                 AudioClipManager.PlaySound("button");
-                SceneManager.LoadScene(6);
+                SceneManager.LoadScene(1);
             }
         }
         else
@@ -116,7 +116,7 @@ public class AuthManager: MonoBehaviour
                 }
                 authTransition = true;
                 AudioClipManager.PlaySound("button");
-                SceneManager.LoadScene(6);
+                SceneManager.LoadScene(1);
                 Debug.Log("User profile updated successfully");
                 Debug.LogFormat("Get current user display name {0}", GetCurrentUserDisplayName());
             });
@@ -218,7 +218,7 @@ public class AuthManager: MonoBehaviour
             auth.SignOut();
             signOutTransition = true;
             AudioClipManager.PlaySound("button");
-            SceneManager.LoadScene(6);
+            SceneManager.LoadScene(0);
         }
     }
 
