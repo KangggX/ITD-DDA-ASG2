@@ -98,7 +98,6 @@ function retrieveLeaderboardData() {
                 else {
                     position = index + "th"
                 }
-                console.log(childSnapshot.key);
 
                 update(ref(db), {["/playerStats/" + childSnapshot.key + "/leaderboardPosition"]: position});
 
@@ -157,50 +156,20 @@ function updateLeaderboard(){
     }, 100);
 }
 
-// Converts seconds to HH:MM:SS
-// Modified to convert to MM:SS instead and a check to see if timing is N/A
-// Courtesy of: https://www.codegrepper.com/code-examples/javascript/convert+seconds+to+hours+minutes+seconds+javascript
-function convertHMS(value) {
-    const sec = parseInt(value, 10); // convert value to number if it's string
-    
-    let result;
-    let hours   = Math.floor(sec / 3600); // get hours
-    let minutes = Math.floor((sec - (hours * 3600)) / 60); // get minutes
-    let seconds = sec - (hours * 3600) - (minutes * 60); //  get seconds
-    // add 0 if value < 10; Example: 2 => 02
-    if (hours   < 10) {hours   = "0"+hours;}
-    if (minutes < 10) {minutes = "0"+minutes;}
-    if (seconds < 10) {seconds = "0"+seconds;}
-    // return hours+':'+minutes+':'+seconds; // Return is HH : MM : SS
-
-    result = minutes+':'+seconds;
-
-    // Check if initial value input is N/A
-    // if it is indeed N/A, make sure to return "N/A" instead of "NaN:NaN"
-    if (result == "NaN:NaN") {
-        return "N/A"
-    }
-    else {
-        return minutes+':'+seconds; // Return is MM : SS
-    }
-}
 
 function updateProfilePage(username) {
     getKey(username);
-
+    
     setTimeout(() => {
-        
-
         get(ref(db, "playerStats/" + key)).then((snapshot) => {
             if (snapshot.exists()) {
-                console.log(snapshot.val())
                 $("#leaderboardPositionDetail").text(`${snapshot.child("leaderboardPosition").val()}`);
-                $("#fastestTimeDetail").text(`${snapshot.child("fastestTime").val()}`);
+                $("#fastestTimeDetail").text(`${convertHMS(snapshot.child("fastestTime").val())}`);
                 $("#totalTimeDetail").text(`${snapshot.child("totalTime").val()}`);
                 $("#totalGameDetail").text(`${snapshot.child("totalGame").val()}`);
             }
             else {
-
+                
             }
         });
     }, 500);
@@ -214,7 +183,7 @@ function getKey(username) {
                     if (username == childSnapshot.child("displayname").val()) {
                         key = childSnapshot.key;
                         console.log(key);
-
+                        
                         return;
                     }
                 });
@@ -224,4 +193,39 @@ function getKey(username) {
             }
         }
     });
+}
+
+// Converts seconds to HH:MM:SS
+// Modified to convert to MM:SS instead and a check to see if timing is N/A
+// Courtesy of: https://www.codegrepper.com/code-examples/javascript/convert+seconds+to+hours+minutes+seconds+javascript
+function convertHMS(value) {
+    const sec = parseInt(value, 10); // convert value to number if it's string
+    
+    let result;
+    let hours   = Math.floor(sec / 3600); // get hours
+    let minutes = Math.floor((sec - (hours * 3600)) / 60); // get minutes
+    let seconds = sec - (hours * 3600) - (minutes * 60); //  get seconds
+    // add 0 if value < 10; Example: 2 => 02
+    if (hours   < 10) {hours   = "0" + hours;}
+    if (minutes < 10) {minutes = "0" + minutes;}
+    if (seconds < 10) {seconds = "0" + seconds;}
+    // return hours+':'+minutes+':'+seconds; // Return is HH : MM : SS
+
+    result = minutes+':'+seconds;
+
+    // Check if initial value input is N/A
+    // if it is indeed N/A, make sure to return "N/A" instead of "NaN:NaN"
+    if (result == "NaN:NaN") {
+        return "N/A"
+    }
+    else if (hours == 0 && minutes == 0) {
+        return seconds + "s";
+    }
+    else if (hours == 0) {
+        return minutes + "m" + " " + seconds + "s";
+    }
+    else {
+        // return minutes+':'+seconds; // Return is MM : SS
+        return hours + "h" + " " + minutes + "m" + " " + seconds + "s";
+    }
 }
