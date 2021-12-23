@@ -2564,7 +2564,7 @@ GameObject:
   - component: {fileID: 1108220346}
   - component: {fileID: 1108220345}
   - component: {fileID: 1108220344}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3468,8 +3468,6 @@ GameObject:
   - component: {fileID: 1450394407}
   - component: {fileID: 1450394409}
   - component: {fileID: 1450394408}
-  - component: {fileID: 1450394410}
-  - component: {fileID: 1450394411}
   m_Layer: 0
   m_Name: XR Origin (1)
   m_TagString: Untagged
@@ -3555,48 +3553,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   inputSource: 4
-  gravity: -9.81
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  additionalHeight: 0.2
   rig: {fileID: 0}
   playerCamera: {fileID: 97872491}
---- !u!114 &1450394410
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1450394404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03a5df2202a8b96488c744be3bd0c33e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Timeout: 10
-  m_XROrigin: {fileID: 0}
---- !u!114 &1450394411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1450394404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc4f2c0214c9b494fa7eb5b8b2c02885, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_System: {fileID: 0}
-  m_TurnAmount: 45
-  m_DebounceTime: 0.2
-  m_EnableTurnLeftRight: 1
-  m_EnableTurnAround: 1
-  m_TurnUsage: 0
-  m_Controllers:
-  - {fileID: 353289863}
-  m_DeadZone: 0.75
 --- !u!1 &1561642389
 GameObject:
   m_ObjectHideFlags: 0
