@@ -221,6 +221,20 @@ form .form-input {
     margin: 10px 0; 
 }
 
+.setting-button {
+    display: block !important;
+    color: #fff !important;
+    width: 250px;
+    border-radius: 5px;
+    padding: 10px 0;
+    cursor: pointer;
+    transition: 0.2s all ease-in-out;
+}
+
+.setting-button:first-child {
+    margin-bottom: 10px;
+}
+
 /*===========================
     Sign In/Sign Up styling
 ===========================*/
