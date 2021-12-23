@@ -26,6 +26,7 @@ import {
 
 const db = getDatabase();
 const playerRef = ref(db, "players");
+const playerStatsRef = ref(db, "playerStats");
 const leaderboardRef = ref(db, "leaderboard");
 
 //Working with Auth
@@ -33,8 +34,9 @@ const auth = getAuth();
 const user = auth.currentUser;
 
 var leaderboardData = {
-    username: "",
-    fastestTime: 0
+    displayname: "",
+    fastestTime: 0,
+    updatedOn: Date.now()
 }
 
 var key;
@@ -71,7 +73,7 @@ function leaderboardUpdater() {
 }
 
 function retrieveLeaderboardData() {
-    const que = query(playerRef, orderByChild("fastestTime"));
+    let que = query(playerStatsRef, orderByChild("fastestTime"));
 
     get(que).then((snapshot) => {
         if (snapshot.exists()) {
@@ -96,18 +98,19 @@ function retrieveLeaderboardData() {
                 else {
                     position = index + "th"
                 }
+                console.log(childSnapshot.key);
 
-                update(ref(db), {["/players/" + childSnapshot.key + "/leaderboardPosition"]: position});
+                update(ref(db), {["/playerStats/" + childSnapshot.key + "/leaderboardPosition"]: position});
 
-                leaderboardData.username = childSnapshot.child("username").val();
+                leaderboardData.displayname = childSnapshot.child("displayname").val();
                 leaderboardData.fastestTime = childSnapshot.child("fastestTime").val();
 
                 
-                set(ref(db, "leaderboard/" + index), leaderboardData); // Pushing new data into Database
+                set(ref(db, "leaderboard/" + childSnapshot.key), leaderboardData); // Pushing new data into Database
                 
                 index++;
                 
-                tempLeaderboardArray.push({key: childSnapshot.key, username: childSnapshot.child("username").val(), fastestTime: childSnapshot.child("fastestTime").val()});
+                // tempLeaderboardArray.push({key: childSnapshot.key, username: childSnapshot.child("displayname").val(), fastestTime: childSnapshot.child("fastestTime").val()});
             });
         }
     });
@@ -128,18 +131,23 @@ function updateLeaderboard(){
                 <div class="leaderboard__list--content leaderboard__title--username">Username</div>
             </li>
         `);
+        let que = query(leaderboardRef, orderByChild("fastestTime"));
 
         // Appending leaderboard data
-        get(leaderboardRef).then((snapshot) => {
+        get(que).then((snapshot) => {
             if (snapshot.exists()) {
+
+                let index = 1;
+                
                 snapshot.forEach((childSnapshot) => {
-                    // console.log(childSnapshot.val());
                     
                     $(".leaderboard__list").append(`<li>
-                        <div class="leaderboard__list--content leaderboard--ranking">${childSnapshot.key}</div>
+                        <div class="leaderboard__list--content leaderboard--ranking">${index}</div>
                         <div class="leaderboard__list--content leaderboard--score">${convertHMS(childSnapshot.child("fastestTime").val())}</div>
-                        <div class="leaderboard__list--content leaderboard--username">${childSnapshot.child("username").val()}</div>
+                        <div class="leaderboard__list--content leaderboard--username">${childSnapshot.child("displayname").val()}</div>
                     </li>`)
+
+                    index++;
                 })
             }
             else {
@@ -183,7 +191,7 @@ function updateProfilePage(username) {
     setTimeout(() => {
         
 
-        get(ref(db, "players/" + key)).then((snapshot) => {
+        get(ref(db, "playerStats/" + key)).then((snapshot) => {
             if (snapshot.exists()) {
                 console.log(snapshot.val())
                 $("#leaderboardPositionDetail").text(`${snapshot.child("leaderboardPosition").val()}`);
@@ -203,7 +211,7 @@ function getKey(username) {
         if (snapshot.exists()) {
             try {
                 snapshot.forEach((childSnapshot) => {
-                    if (username == childSnapshot.child("username").val()) {
+                    if (username == childSnapshot.child("displayname").val()) {
                         key = childSnapshot.key;
                         console.log(key);
 

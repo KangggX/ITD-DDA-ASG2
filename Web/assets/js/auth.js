@@ -31,6 +31,7 @@ import {
 
 const db = getDatabase();
 const playerRef = ref(db, "players");
+const playerStatsRef = ref(db, "playerStats");
 
 const auth = getAuth();
 const user = auth.currentUser;
@@ -47,17 +48,26 @@ var signUpPassword2 = $("#up__password--2");
 
 var recoveryEmail = $("#recovery__email");
 
-var usernameList = [];
-
 var isUsernameSimilar = false;
 
+// For player parent
 var playerData = {
     email: "",
-    username: "",
+    displayname: "",
+    active: true,
+    createdOn: Date.now(),
+    updatedOn: Date.now(),
+    lastLoggedIn: Date.now()
+}
+
+// For playerStats parent
+var playerStatsData = {
+    displayname: "",
     leaderboardPosition: "N/A",
-    fastestTime: 0,
+    fastestTime: "N/A",
     totalTime: 0,
-    totalGame: 0
+    totalGame: 0,
+    updatedOn: Date.now()
 }
 
 // Check if user is signed in or not
@@ -65,7 +75,7 @@ onAuthStateChanged(auth, (user) => {
     if (user) {
         // User is signed in.
         $("#in").css("display", "none");
-        $("#out").css("display", "initial");
+        $("#out").css("display", "block");
         $("#userbar").css("display", "inline-block");
         $("#username").html(`
         ${user.displayName}
@@ -228,21 +238,26 @@ function userRecovery(email) {
 
 // Create a new set of data in the database for newly registered users
 function createUserDatabase(email, username) {
-    const key = push(playerRef);
+    const key = push(playerRef).key;
 
     playerData.email = email;
-    playerData.username = username;
+    playerData.displayname = username;
 
-    set(key, playerData);
+    playerStatsData.displayname = username;
+
+    set(ref(db, "players/" + key), playerData);
+    set(ref(db, "playerStats/" + key), playerStatsData);
 }
 
 function compareUsername(username) {
+    isUsernameSimilar = false;
+
     get(playerRef).then((snapshot) => {
         if (snapshot.exists()) {
             try {
                 snapshot.forEach((childSnapshot) => {
                     if (!isUsernameSimilar) {
-                        if (username == childSnapshot.child("username").val()) {
+                        if (username == childSnapshot.child("displayname").val()) {
                             console.log("same");
     
                             isUsernameSimilar = true;
