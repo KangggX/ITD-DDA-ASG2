@@ -7,6 +7,7 @@ TagManager:
   - Screw
   - Cpu
   - Ram
+  - Ssd
   layers:
   - Default
   - TransparentFX

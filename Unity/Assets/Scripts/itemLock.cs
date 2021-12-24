@@ -5,14 +5,15 @@ using System;
 
 public class itemLock : MonoBehaviour
 {
-    public enum Components { Screw, cpu , ram}
+    public enum Components { Screw, cpu , ram, ssd}
 
     public Components Component;
     [Header ("Other component")]
     public GameObject ItemAni;
 
     public GameObject ItemModel;
-    [Header ("Screw")]
+    [Header("Screw")]
+    public GameObject screwComponent;
     //if needed
     public GameObject ItemCol;
 
@@ -22,7 +23,7 @@ public class itemLock : MonoBehaviour
     private bool screwTrue = false;
     private bool cpuTrue = false;
     private bool ramTrue = false;
-
+    private bool ssdTrue = false;
 
     public GameObject speedRunManager;
     public bool speedRun = false;
@@ -48,7 +49,9 @@ public class itemLock : MonoBehaviour
             case Components.ram:
                 ramTrue = true;
                 break;
-
+            case Components.ssd:
+                ssdTrue = true;
+                break;
         }
     }
     private void OnCollisionEnter(Collision collision)
@@ -87,6 +90,20 @@ public class itemLock : MonoBehaviour
             if (speedRun)
             {
                 speedRunManager.GetComponent<SpeedRunManager>().RAM();
+            }
+        }
+        if (collision.gameObject.tag == "Ssd" && ssdTrue == true)
+        {
+            //ItemCol.GetComponent<ScrewInteract>().enabled = true;
+            ItemAni.SetActive(true);
+
+            ItemModel.SetActive(false);
+            this.gameObject.SetActive(false);
+            screwComponent.SetActive(true);
+            if (speedRun)
+            {
+                //change accordingly
+                //speedRunManager.GetComponent<SpeedRunManager>().RAM();
             }
         }
     }
