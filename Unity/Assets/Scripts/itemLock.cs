@@ -22,10 +22,19 @@ public class itemLock : MonoBehaviour
     private bool screwTrue = false;
     private bool cpuTrue = false;
     private bool ramTrue = false;
-    void Start()
+
+
+    public GameObject speedRunManager;
+    public bool speedRun = false;
+
+    private void Start()
     {
-        
+        if (speedRunManager.activeInHierarchy)
+        {
+            speedRun = speedRunManager.GetComponent<SpeedRunManager>().speedRun;
+        }
     }
+
     void Update()
     {
         switch (Component)
@@ -51,7 +60,10 @@ public class itemLock : MonoBehaviour
             
             ItemModel.SetActive(false);
             this.gameObject.SetActive(false);
-            
+            if (speedRun)
+            {
+                speedRunManager.GetComponent<SpeedRunManager>().Screwed();
+            }
         }
         if (collision.gameObject.tag == "Cpu" && cpuTrue == true)
         {
@@ -60,7 +72,10 @@ public class itemLock : MonoBehaviour
 
             ItemModel.SetActive(false);
             this.gameObject.SetActive(false);
-
+            if (speedRun)
+            {
+                speedRunManager.GetComponent<SpeedRunManager>().CPU();
+            }
         }
         if (collision.gameObject.tag == "ram" && ramTrue == true)
         {
@@ -69,7 +84,11 @@ public class itemLock : MonoBehaviour
 
             ItemModel.SetActive(false);
             this.gameObject.SetActive(false);
-
+            if (speedRun)
+            {
+                speedRunManager.GetComponent<SpeedRunManager>().RAM();
+            }
         }
     }
+
 }
