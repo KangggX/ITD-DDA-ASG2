@@ -5,7 +5,7 @@ using System;
 
 public class itemLock : MonoBehaviour
 {
-    public enum Components { Screw, cpu , etc}
+    public enum Components { Screw, cpu , ram}
 
     public Components Component;
     [Header ("Other component")]
