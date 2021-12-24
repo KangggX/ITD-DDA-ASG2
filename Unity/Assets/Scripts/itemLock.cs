@@ -5,7 +5,7 @@ using System;
 
 public class itemLock : MonoBehaviour
 {
-    public enum Components { Screw, cpu , ram, ssd,fan}
+    public enum Components { Screw, cpu, ram, ssd, fan, Case, Gpu, Wifi }
 
     public Components Component;
     [Header ("Other component")]
@@ -25,9 +25,12 @@ public class itemLock : MonoBehaviour
     private bool ramTrue = false;
     private bool ssdTrue = false;
     private bool fanTrue = false;
+    private bool caseTrue = false;
+    private bool gpuTrue = false;
+    private bool wifiTrue = false;
     public GameObject speedRunManager;
     public bool speedRun = false;
-
+    
     private void Start()
     {
         if (speedRunManager.activeInHierarchy)
@@ -54,6 +57,15 @@ public class itemLock : MonoBehaviour
                 break;
             case Components.fan:
                 fanTrue = true;
+                break;
+            case Components.Case:
+                caseTrue = true;
+                break;
+            case Components.Gpu :
+                gpuTrue = true;
+                break;
+            case Components.Wifi:
+                wifiTrue = true;
                 break;
         }
     }
@@ -117,6 +129,48 @@ public class itemLock : MonoBehaviour
             ItemModel.SetActive(false);
             this.gameObject.SetActive(false);
             screwComponent.SetActive(true);
+            if (speedRun)
+            {
+                //change accordingly
+                //speedRunManager.GetComponent<SpeedRunManager>().RAM();
+            }
+        }
+        if (collision.gameObject.tag == "Case" && caseTrue == true)
+        {
+            //ItemCol.GetComponent<ScrewInteract>().enabled = true;
+            ItemAni.SetActive(true);
+
+            ItemModel.SetActive(false);
+            this.gameObject.SetActive(false);
+            screwComponent.SetActive(true);
+            if (speedRun)
+            {
+                //change accordingly
+                //speedRunManager.GetComponent<SpeedRunManager>().RAM();
+            }
+        }
+        if (collision.gameObject.tag == "Gpu" && gpuTrue == true)
+        {
+            //ItemCol.GetComponent<ScrewInteract>().enabled = true;
+            ItemAni.SetActive(true);
+
+            ItemModel.SetActive(false);
+            this.gameObject.SetActive(false);
+            
+            if (speedRun)
+            {
+                //change accordingly
+                //speedRunManager.GetComponent<SpeedRunManager>().RAM();
+            }
+        }
+        if (collision.gameObject.tag == "Wfi" && wifiTrue == true)
+        {
+            //ItemCol.GetComponent<ScrewInteract>().enabled = true;
+            ItemAni.SetActive(true);
+
+            ItemModel.SetActive(false);
+            this.gameObject.SetActive(false);
+
             if (speedRun)
             {
                 //change accordingly

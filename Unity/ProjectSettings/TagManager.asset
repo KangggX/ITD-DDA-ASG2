@@ -9,6 +9,9 @@ TagManager:
   - Ram
   - Ssd
   - Fan
+  - Case
+  - Gpu
+  - Wfi
   layers:
   - Default
   - TransparentFX
