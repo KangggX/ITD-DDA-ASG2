@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &14403046 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6754548393837852127, guid: cb06415849029df489c5eced5a0c2d92, type: 3}
+  m_PrefabInstance: {fileID: 1555526677}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &76004395
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -982,11 +987,59 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &324635047 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6754548393837852127, guid: cb06415849029df489c5eced5a0c2d92, type: 3}
+  m_PrefabInstance: {fileID: 1174213932}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &324635050 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6266522858979307365, guid: cb06415849029df489c5eced5a0c2d92, type: 3}
   m_PrefabInstance: {fileID: 1174213932}
   m_PrefabAsset: {fileID: 0}
+--- !u!64 &324635051
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324635047}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8438088929242748664, guid: 765513f734f2fff49a330b5afb941e72, type: 3}
+--- !u!54 &324635052
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324635047}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &324635053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324635047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91e8cde6b761ef3418a6258f571250c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubee: {fileID: 0}
 --- !u!1001 &385689100
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2831,6 +2884,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ram model
       objectReference: {fileID: 0}
+    - target: {fileID: 6754548393837852127, guid: cb06415849029df489c5eced5a0c2d92, type: 3}
+      propertyPath: m_TagString
+      value: Ram
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb06415849029df489c5eced5a0c2d92, type: 3}
 --- !u!1 &1180282737
@@ -3533,9 +3590,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02660a419b5ba474cad693aaa5dda9cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Component: 0
-  ItemAni: {fileID: 0}
-  ItemModel: {fileID: 0}
+  Component: 2
+  ItemAni: {fileID: 14403046}
+  ItemModel: {fileID: 324635047}
   ItemCol: {fileID: 0}
   RotateScrew: {fileID: 0}
 --- !u!1001 &1303207737
