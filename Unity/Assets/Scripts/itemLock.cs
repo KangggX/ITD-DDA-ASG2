@@ -77,7 +77,7 @@ public class itemLock : MonoBehaviour
                 speedRunManager.GetComponent<SpeedRunManager>().CPU();
             }
         }
-        if (collision.gameObject.tag == "ram" && ramTrue == true)
+        if (collision.gameObject.tag == "Ram" && ramTrue == true)
         {
             //ItemCol.GetComponent<ScrewInteract>().enabled = true;
             ItemAni.SetActive(true);
