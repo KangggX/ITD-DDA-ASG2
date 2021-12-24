@@ -5,7 +5,7 @@ using System;
 
 public class itemLock : MonoBehaviour
 {
-    public enum Components { Screw, cpu , etc}
+    public enum Components { Screw, cpu , ram}
 
     public Components Component;
     [Header ("Other component")]
@@ -21,7 +21,8 @@ public class itemLock : MonoBehaviour
 
     private bool screwTrue = false;
     private bool cpuTrue = false;
-     void Start()
+    private bool ramTrue = false;
+    void Start()
     {
         
     }
@@ -35,6 +36,10 @@ public class itemLock : MonoBehaviour
             case Components.cpu:
                 cpuTrue = true;
                 break;
+            case Components.ram:
+                ramTrue = true;
+                break;
+
         }
     }
     private void OnCollisionEnter(Collision collision)
@@ -49,6 +54,15 @@ public class itemLock : MonoBehaviour
             
         }
         if (collision.gameObject.tag == "Cpu" && cpuTrue == true)
+        {
+            //ItemCol.GetComponent<ScrewInteract>().enabled = true;
+            ItemAni.SetActive(true);
+
+            ItemModel.SetActive(false);
+            this.gameObject.SetActive(false);
+
+        }
+        if (collision.gameObject.tag == "ram" && ramTrue == true)
         {
             //ItemCol.GetComponent<ScrewInteract>().enabled = true;
             ItemAni.SetActive(true);

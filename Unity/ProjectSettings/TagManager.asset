@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Screw
   - Cpu
+  - Ram
   layers:
   - Default
   - TransparentFX
