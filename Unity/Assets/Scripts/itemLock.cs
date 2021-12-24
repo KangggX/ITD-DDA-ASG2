@@ -9,6 +9,10 @@ public class itemLock : MonoBehaviour
     public GameObject ItemCol;
     
     public GameObject ItemAni;
+
+    public GameObject ItemModel;
+    //if needed
+    public GameObject RotateScrew;
     private void Start()
     {
         
@@ -23,6 +27,8 @@ public class itemLock : MonoBehaviour
         {
             ItemCol.GetComponent<ScrewInteract>().enabled=true;
             ItemAni.SetActive(true);
+            
+            ItemModel.SetActive(false);
             this.gameObject.SetActive(false);
             
         }
