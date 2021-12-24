@@ -1236,3 +1236,211 @@ Received Import Request.
 Start importing Assets/Models/models 1/cpu Variant.prefab using Guid(e33db7eb69d90da46a285e6d19030df9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '81db394e0c482fa6ef49b04b31916f5c') in 0.043796 seconds 
   Import took 0.069174 seconds .
 
+========================================================================
+Received Import Request.
+  Time since last request: 269.914020 seconds.
+  path: Assets/Models/texture 2/case
+  artifactKey: Guid(839c5972dcafd864f9492d3c328d1643) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/texture 2/case using Guid(839c5972dcafd864f9492d3c328d1643) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '54fd236cdaf4509ee8e08f7e539463fd') in 0.009258 seconds 
+  Import took 0.083849 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.002669 seconds.
+  path: Assets/Models/texture 2/case/Case_lambert2_BaseColor.1001.png
+  artifactKey: Guid(27ddcc81b4c60f64aa6652fb4430b1a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/texture 2/case/Case_lambert2_BaseColor.1001.png using Guid(27ddcc81b4c60f64aa6652fb4430b1a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a07b3b2d8924fe486510a1687273e3e9') in 0.034262 seconds 
+  Import took 0.092493 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000267 seconds.
+  path: Assets/Models/texture 2/case/Case_lambert2_Height.1001.png
+  artifactKey: Guid(99d4ec88f60549840a9d69afc54302bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/texture 2/case/Case_lambert2_Height.1001.png using Guid(99d4ec88f60549840a9d69afc54302bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '291dc69cd99877ef65bd7fc1ae2c9355') in 0.017684 seconds 
+  Import took 0.038599 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000351 seconds.
+  path: Assets/Models/texture 2/case/Case_lambert2_Metallic.1001.png
+  artifactKey: Guid(752811ba43c8f484f96d20ae84a5dfcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/texture 2/case/Case_lambert2_Metallic.1001.png using Guid(752811ba43c8f484f96d20ae84a5dfcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6201783a8e22d58ec15ba8b4bb22c59e') in 0.020219 seconds 
+  Import took 0.065242 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000259 seconds.
+  path: Assets/Models/texture 2/case/Case_lambert3_Roughness.1002.png
+  artifactKey: Guid(a6a08c86d15b4c742945f36a4aa10a3c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/texture 2/case/Case_lambert3_Roughness.1002.png using Guid(a6a08c86d15b4c742945f36a4aa10a3c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd706af56464baa5742071b64e78455fa') in 0.017283 seconds 
+  Import took 0.053871 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000410 seconds.
+  path: Assets/Models/texture 2/case/Case_lambert3_Height.1002.png
+  artifactKey: Guid(b0c1eefc975e0ec488d811e60317ffa4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/texture 2/case/Case_lambert3_Height.1002.png using Guid(b0c1eefc975e0ec488d811e60317ffa4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '69cb051e693395d1ee8dd549008b8398') in 0.017152 seconds 
+  Import took 0.035492 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000326 seconds.
+  path: Assets/Models/texture 2/case/Case_lambert3_Metallic.1002.png
+  artifactKey: Guid(7b2db1331eb476c49908e23521c48238) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/texture 2/case/Case_lambert3_Metallic.1002.png using Guid(7b2db1331eb476c49908e23521c48238) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c5f5a0c9489f340d6af530a45fd757fe') in 0.019344 seconds 
+  Import took 0.051977 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000280 seconds.
+  path: Assets/Models/texture 2/case/Case_lambert2_Normal.1001.png
+  artifactKey: Guid(caac87132b53ed742a57f8420fb39ca5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/texture 2/case/Case_lambert2_Normal.1001.png using Guid(caac87132b53ed742a57f8420fb39ca5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c59f0cc755b0f0f8eccaad489275e6d8') in 0.018143 seconds 
+  Import took 0.022303 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000280 seconds.
+  path: Assets/Models/texture 2/case/Case_lambert2_Roughness.1001.png
+  artifactKey: Guid(46b4cd5aa4e1e0f42b8441a3287c225a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/texture 2/case/Case_lambert2_Roughness.1001.png using Guid(46b4cd5aa4e1e0f42b8441a3287c225a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '67227ce362906086334e16880bf038ec') in 0.020118 seconds 
+  Import took 0.035060 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000413 seconds.
+  path: Assets/Models/texture 2/case/Case_lambert3_BaseColor.1002.png
+  artifactKey: Guid(25542ef53c112554e9b3d1498572bf40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/texture 2/case/Case_lambert3_BaseColor.1002.png using Guid(25542ef53c112554e9b3d1498572bf40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3302936cfcfed80316eead104a6ee13d') in 0.020811 seconds 
+  Import took 0.041738 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000428 seconds.
+  path: Assets/Models/texture 2/case/Case_lambert3_Normal.1002.png
+  artifactKey: Guid(ec15fe8cb09d3c345a12215122fbd05a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/texture 2/case/Case_lambert3_Normal.1002.png using Guid(ec15fe8cb09d3c345a12215122fbd05a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b6700d3242da59e174f9a28969fcb969') in 0.016073 seconds 
+  Import took 0.020662 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 178.471850 seconds.
+  path: Assets/MRTK
+  artifactKey: Guid(9227714a81d05f94f97443ce25f9c61a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MRTK using Guid(9227714a81d05f94f97443ce25f9c61a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7afb4610317f858bc79698824c138bed') in 0.009764 seconds 
+  Import took 0.299565 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 19.863757 seconds.
+  path: Assets/Models/models 2/Case.fbx
+  artifactKey: Guid(ca5403a4e57ba494ba35a9d41c217cde) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/models 2/Case.fbx using Guid(ca5403a4e57ba494ba35a9d41c217cde) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5cdf3e95c9b26c32a6da75eacf928335') in 0.027432 seconds 
+  Import took 0.054430 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 93.023360 seconds.
+  path: Assets/Models/texture 2/Gpu
+  artifactKey: Guid(7395d6022e4b88b4a8fa5b7e4afda83d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/texture 2/Gpu using Guid(7395d6022e4b88b4a8fa5b7e4afda83d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5159e6887b5eacde47d04ba2e5972458') in 0.008990 seconds 
+  Import took 0.052500 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.040395 seconds.
+  path: Assets/Models/texture 2/Gpu/GPU_lambert1_BaseColor.1001.png
+  artifactKey: Guid(3602ff8220efb1e4aadd12d773940699) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/texture 2/Gpu/GPU_lambert1_BaseColor.1001.png using Guid(3602ff8220efb1e4aadd12d773940699) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f1d157ecf6b4e6f3544efe441c2d7198') in 0.017948 seconds 
+  Import took 0.031192 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000247 seconds.
+  path: Assets/Models/texture 2/Gpu/GPU_lambert1_Metallic.1001.png
+  artifactKey: Guid(891ef8e85bd84c5418b94e0e98309dd5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/texture 2/Gpu/GPU_lambert1_Metallic.1001.png using Guid(891ef8e85bd84c5418b94e0e98309dd5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5ef1e85167fecee50fe49a5c9a3794ab') in 0.019855 seconds 
+  Import took 0.030779 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000438 seconds.
+  path: Assets/Models/texture 2/Gpu/GPU_lambert1_Normal.1001.png
+  artifactKey: Guid(6c726a5318a21c94892d0600b91908fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/texture 2/Gpu/GPU_lambert1_Normal.1001.png using Guid(6c726a5318a21c94892d0600b91908fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e7a68ab1a5bfaef86da6cc1123c1656f') in 0.017839 seconds 
+  Import took 0.022692 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000333 seconds.
+  path: Assets/Models/texture 2/Gpu/GPU_lambert1_Roughness.1001.png
+  artifactKey: Guid(d76aba4a08c96e141a66aefcf14b5a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/texture 2/Gpu/GPU_lambert1_Roughness.1001.png using Guid(d76aba4a08c96e141a66aefcf14b5a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '20550d3a24f391600d94733e80cf0a75') in 0.023462 seconds 
+  Import took 0.043263 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000271 seconds.
+  path: Assets/Models/texture 2/Gpu/GPU_lambert1_Height.1001.png
+  artifactKey: Guid(3138ca43285097b479d7e34742cca328) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/texture 2/Gpu/GPU_lambert1_Height.1001.png using Guid(3138ca43285097b479d7e34742cca328) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4c796579cde03c8bbc93de2a705047ea') in 0.018536 seconds 
+  Import took 0.024066 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.408252 seconds.
+  path: Assets/Models/texture 2/PSU
+  artifactKey: Guid(4a51950072ed03b43b5a020c47979adb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/texture 2/PSU using Guid(4a51950072ed03b43b5a020c47979adb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8d17c6807776d71b424f9c64aa42793a') in 0.009693 seconds 
+  Import took 0.044513 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.042731 seconds.
+  path: Assets/Models/texture 2/PSU/PSU_lambert1_BaseColor.1001.png
+  artifactKey: Guid(b73c7ccc656ef744ab01d6f6afbcf15e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/texture 2/PSU/PSU_lambert1_BaseColor.1001.png using Guid(b73c7ccc656ef744ab01d6f6afbcf15e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a096efe9ea7490d3eea8477b0f9d2827') in 0.016028 seconds 
+  Import took 0.020451 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000330 seconds.
+  path: Assets/Models/texture 2/PSU/PSU_lambert1_Metallic.1001.png
+  artifactKey: Guid(932aebe0058773b4e863f27a98dfe3ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/texture 2/PSU/PSU_lambert1_Metallic.1001.png using Guid(932aebe0058773b4e863f27a98dfe3ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c9d257ab515a929fa4e05f264e83f847') in 0.023142 seconds 
+  Import took 0.036997 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000343 seconds.
+  path: Assets/Models/texture 2/PSU/PSU_lambert1_Height.1001.png
+  artifactKey: Guid(cd22c829b003b47448bd5f6d2f4d9542) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/texture 2/PSU/PSU_lambert1_Height.1001.png using Guid(cd22c829b003b47448bd5f6d2f4d9542) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9d613cc4caa72c7c573209581faff36b') in 0.017998 seconds 
+  Import took 0.031595 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000239 seconds.
+  path: Assets/Models/texture 2/PSU/PSU_lambert1_Roughness.1001.png
+  artifactKey: Guid(22f8d95bd98c5b940a915a6ea49988ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/texture 2/PSU/PSU_lambert1_Roughness.1001.png using Guid(22f8d95bd98c5b940a915a6ea49988ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c1f9bf1f616f4f40d77d910899fb5620') in 0.018843 seconds 
+  Import took 0.031422 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000224 seconds.
+  path: Assets/Models/texture 2/PSU/PSU_lambert1_Normal.1001.png
+  artifactKey: Guid(40499ad0c2dba454da878508895b3024) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/texture 2/PSU/PSU_lambert1_Normal.1001.png using Guid(40499ad0c2dba454da878508895b3024) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f1cf883fdc450bffdfcfbd405be8867') in 0.018714 seconds 
+  Import took 0.043196 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 50.083061 seconds.
+  path: Assets/Models/texture 2/PSU/psu.mat
+  artifactKey: Guid(a05f0b77478e3ad418dd809eb866e42e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/texture 2/PSU/psu.mat using Guid(a05f0b77478e3ad418dd809eb866e42e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2d44c09e371174f5191b681a57cebc02') in 0.022733 seconds 
+  Import took 0.043080 seconds .
+
