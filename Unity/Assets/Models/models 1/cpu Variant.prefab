@@ -57,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 36b49a7347fcf8c4b9d114e9b0fae55d, type: 2}
     - target: {fileID: 919132149155446097, guid: 45daa811eabe0b645a89b1f9db150928, type: 3}
       propertyPath: m_Name
-      value: cpu
+      value: cpu Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45daa811eabe0b645a89b1f9db150928, type: 3}
