@@ -20,6 +20,7 @@ public class itemLock : MonoBehaviour
     public GameObject RotateScrew;
 
     private bool screwTrue = false;
+    private bool cpuTrue = false;
      void Start()
     {
         
@@ -32,7 +33,7 @@ public class itemLock : MonoBehaviour
                 screwTrue = true;
                 break;
             case Components.cpu:
-                print("hoho");
+                cpuTrue = true;
                 break;
         }
     }
@@ -46,6 +47,15 @@ public class itemLock : MonoBehaviour
             ItemModel.SetActive(false);
             this.gameObject.SetActive(false);
             
+        }
+        if (collision.gameObject.tag == "Cpu" && cpuTrue == true)
+        {
+            //ItemCol.GetComponent<ScrewInteract>().enabled = true;
+            ItemAni.SetActive(true);
+
+            ItemModel.SetActive(false);
+            this.gameObject.SetActive(false);
+
         }
     }
 }
