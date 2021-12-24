@@ -8,6 +8,7 @@ TagManager:
   - Cpu
   - Ram
   - Ssd
+  - Fan
   layers:
   - Default
   - TransparentFX
