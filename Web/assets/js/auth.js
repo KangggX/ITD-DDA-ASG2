@@ -10,6 +10,7 @@ import {
     setPersistence, 
     browserLocalPersistence,
     updateProfile,
+    updatePassword,
     sendPasswordResetEmail
 } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js";
 
@@ -47,6 +48,9 @@ var signUpPassword1 = $("#up__password--1");
 var signUpPassword2 = $("#up__password--2");
 
 var recoveryEmail = $("#recovery__email");
+
+var changePassword1 = $("#recovery__password--1");
+var changePassword2 = $("#recovery__password--2");
 
 var isUsernameSimilar = false;
 
@@ -100,6 +104,7 @@ function formCheck(e) {
     }
 }
 
+// Check if sign in form inputs are valid or not, enabling the submit button
 function signInFormCheck() {
     if (signInEmail.val() == "" || signInPassword.val() == "") {
         $("#in__submit").prop("disabled", true);
@@ -114,6 +119,7 @@ function signInFormCheck() {
     }
 }
 
+// Check if sign up form inputs are valid or not, enabling the submit button
 function signUpFormCheck() {
     if (signUpEmail.val() == "" || signUpName.val() == "" || signUpPassword1.val() == "" || signUpPassword2.val() == "") {
         $("#up__submit").prop("disabled", true);
@@ -127,7 +133,6 @@ function signUpFormCheck() {
         $(".field__error--first").css("display", "block");
     }
     else {
-        console.log("hi");
         $("#up__submit").prop("disabled", false);
         $(".field__error--first").css("display", "none");
         $(".field__error--second").css("display", "none");
@@ -140,6 +145,25 @@ function recoveryFormCheck() {
     }
     else {
         $("#recovery__submit").prop("disabled", false);
+    }
+}
+
+function changeFormCheck() {
+    if (changePassword1.val() == "" || changePassword2.val() == "" ) {
+        $("#change__submit").prop("disabled", true);
+    }
+    else if (changePassword1.val().length > "0" && changePassword1.val().length < "6") {
+        $("#change__submit").prop("disabled", true);
+        $(".field__error--first").css("display", "block");
+    }
+    else if ((changePassword1.val() != changePassword2.val()) && (changePassword1.val().length >= "6") && (changePassword2.val().length > "0")) {
+        $("#change__submit").prop("disabled", true);
+        $(".field__error--second").css("display", "block");
+    }
+    else {
+        $("#change__submit").prop("disabled", false);
+        $(".field__error--first").css("display", "none");
+        $(".field__error--second").css("display", "none");
     }
 }
 
@@ -236,6 +260,16 @@ function userRecovery(email) {
     })
 }
 
+// Change user's password
+function changePassword(password) {
+    updatePassword(user, password)
+    .then(() => {
+        console.log("Password Changed!");
+    }).catch((error) => {
+        console.log("changePassword() error: " + error);
+    });
+}
+
 // Create a new set of data in the database for newly registered users
 function createUserDatabase(email, username) {
     const key = push(playerRef).key;
@@ -249,6 +283,7 @@ function createUserDatabase(email, username) {
     set(ref(db, "playerStats/" + key), playerStatsData);
 }
 
+// Check if a username is already present in database, show error message
 function compareUsername(username) {
     isUsernameSimilar = false;
 
@@ -283,7 +318,9 @@ signInEmail
 .add(signUpName)
 .add(signUpPassword1)
 .add(signUpPassword2)
-.add(recoveryEmail).on("blur", function () {
+.add(recoveryEmail)
+.add(changePassword1)
+.add(changePassword2).on("blur", function () {
     formCheck(this);
 });
 
@@ -297,7 +334,7 @@ signInEmail
 signUpEmail
 .add(signUpName)
 .add(signUpPassword1)
-.add(signUpPassword2).on("blur", function () {
+.add(signUpPassword2).on("blur", function() {
     signUpFormCheck();
 });
 
@@ -306,20 +343,30 @@ recoveryEmail.on("blur", function () {
     recoveryFormCheck();
 });
 
+changePassword1
+.add(changePassword2).on("blur", function() {
+    changeFormCheck();
+});
+
 $("#in__submit").click(function (e) {
     e.preventDefault();
     userLogin();
-})
+});
 
 $("#up__submit").click(function (e) {
     e.preventDefault();
     userRegister(signUpName.val());
-})
+});
 
 $("#recovery__submit").click(function (e) {
     e.preventDefault();
     userRecovery(recoveryEmail.val());
-})
+});
+
+$("#change__submit").click(function (e) {
+    e.preventDefault();
+    changePassword(changePassword2.val());
+});
 
 $("#out").on("click", function (e) {
     userLogout();

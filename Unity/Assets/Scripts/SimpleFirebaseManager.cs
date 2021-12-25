@@ -15,18 +15,21 @@ public class SimpleFirebaseManager : MonoBehaviour
 
     AuthManager authMgr;
 
+    public SpeedRunManager timer;
+
     private void Awake()
     {
         InitializeFirebase();
+        
     }
 
     public void InitializeFirebase()
     {
-        dbPlayerStatsReference = FirebaseDatabase.DefaultInstance.GetReference("players");
+        dbPlayerStatsReference = FirebaseDatabase.DefaultInstance.GetReference("playerStats");
         dbPlayerLeaderboardReference = FirebaseDatabase.DefaultInstance.GetReference("leaderboard");
     }
 
-    public void UpdatePlayerStats(string uuid, int score, int xp, string displayname)
+    public void UpdatePlayerStats(string uuid, string displayname, int time)
     {
         Debug.Log("Entering.. update player stats" + uuid);
         Query playerQuery = dbPlayerStatsReference.Child(uuid);
@@ -57,13 +60,14 @@ public class SimpleFirebaseManager : MonoBehaviour
                     }
                     SimplePlayerStats sp = JsonUtility.FromJson<SimplePlayerStats>(playerStats.GetRawJsonValue());
                     Debug.Log("sp data in update" + sp.SimplePlayerStatsToJson());
-                    sp.xp += xp;
+                    sp.totalGame = sp.totalGame + 1;
+                    sp.totalTime = sp.totalTime + (int)timer.currentTime;
                     sp.updatedOn = sp.GetTimeUnix();
                     //Check if there is a new highscore
-                    //Update leaderboard if there is a new highscore
-                    if (score > sp.fastestTime)
+                    //Update leaderboard if there is a new highscore\
+                    if (time > sp.fastestTime)
                     {
-                        sp.fastestTime = score;
+                        sp.fastestTime = time;
                         UpdatePlayerLeaderboardEntry(uuid, sp.fastestTime, sp.updatedOn);
                         Debug.Log("highscore updated!");
 
@@ -78,9 +82,9 @@ public class SimpleFirebaseManager : MonoBehaviour
                 {
                     //Create player stats
                     //If no existing data, first time player
-                    SimplePlayerStats sp = new SimplePlayerStats(displayname, score, xp);
+                    SimplePlayerStats sp = new SimplePlayerStats(displayname, time);
 
-                    SimpleLeaderboard lb = new SimpleLeaderboard(displayname, score);
+                    SimpleLeaderboard lb = new SimpleLeaderboard(displayname, time);
                     Debug.Log("Let's write new entry" + uuid);
 
                     dbPlayerStatsReference.Child(uuid).SetRawJsonValueAsync(sp.SimplePlayerStatsToJson());

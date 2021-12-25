@@ -39,8 +39,11 @@ var leaderboardData = {
     updatedOn: Date.now()
 }
 
+// Player key, assigned by getKey() function
 var key;
+console.log(user);
 
+// Test array (pls la don't delete)
 var tempLeaderboardArray = [];
 
 onAuthStateChanged(auth, (user) => {
@@ -49,16 +52,13 @@ onAuthStateChanged(auth, (user) => {
         $("#usernameDetail").text(`${user.displayName}`);
         $("#emailDetail").text(`${user.email}`);
         
-        updateProfilePage(user.displayName);
+        updateProfilePage(user.displayName); // Update the profile page
+        updateLeaderboard(); // Update the leaderboard page for newly created user
     } else {
-      // User is signed out
-      // ...
+        // User is signed out
+        updateLeaderboard(); // Update the leaderboard page for newly created user
     }
 });
-
-// onValue(playerRef, () => {
-//     updateLeaderboard();
-// });
 
 leaderboardUpdater();
 
@@ -72,7 +72,7 @@ function leaderboardUpdater() {
     }, 10000); // Every 1000 is 1 second
 }
 
-function retrieveLeaderboardData() {
+function setLeaderboardData() {
     let que = query(playerStatsRef, orderByChild("fastestTime"));
 
     get(que).then((snapshot) => {
@@ -116,7 +116,7 @@ function retrieveLeaderboardData() {
 }
 
 function updateLeaderboard(){
-    retrieveLeaderboardData();
+    setLeaderboardData();
     
     setTimeout(() => {
         // Clear leaderboard content first
@@ -156,7 +156,7 @@ function updateLeaderboard(){
     }, 100);
 }
 
-
+// Updates the profile.html page whenver 
 function updateProfilePage(username) {
     getKey(username);
     
