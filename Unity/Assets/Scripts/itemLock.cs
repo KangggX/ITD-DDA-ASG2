@@ -167,6 +167,7 @@ public class itemLock : MonoBehaviour
 
             ItemModel.SetActive(false);
             this.gameObject.SetActive(false);
+            itemCheck._psu += 1;
         }
         if (collision.gameObject.tag == "panel" && panelTrue == true)
         {
@@ -179,7 +180,7 @@ public class itemLock : MonoBehaviour
         if (collision.gameObject.tag == "Quit" && quitTrue == true)
         {
             //this quits the game to the main menu
-            SceneManager.LoadScene("Authentication");
+            SceneManager.LoadScene("Main Menu");
 
 
         }
