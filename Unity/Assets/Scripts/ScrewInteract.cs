@@ -12,15 +12,14 @@ public class ScrewInteract : MonoBehaviour
     public Animator ScrewAni;
     private void Start()
     {
-        targetValue = 1440
-            ;
+        targetValue = 1440;
         previousRotation = 0;
         currentRotation = transform.eulerAngles.z;
     }
 
     private void Update()
     {
-        if (score == 2)
+        if (score >= 2)
         {
             ScrewAni.SetBool("Screwing", true);
             print("anime play");

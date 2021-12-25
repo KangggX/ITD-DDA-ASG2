@@ -8,9 +8,9 @@ public class SimplePlayerStats
 
     public string displayname;
     public int fastestTime;
-    public int xp;
+    public int totalGame;
+    public int totalTime;
     public long updatedOn;
-    public long createdOn;
 
     //Constructor
     public SimplePlayerStats()
@@ -18,15 +18,15 @@ public class SimplePlayerStats
 
     }
 
-    public SimplePlayerStats(string displayname, int fastestTime, int xp = 0)
+    public SimplePlayerStats(string displayname, int fastestTime, int totalGame = 0, int totalTime = 0)
     {
         this.displayname = displayname;
         this.fastestTime = fastestTime;
-        this.xp = xp;
+        this.totalGame = totalGame;
+        this.totalTime = totalTime;
 
         var timestamp = this.GetTimeUnix();
         this.updatedOn = timestamp;
-        this.createdOn = timestamp;
     }
 
     public long GetTimeUnix()
