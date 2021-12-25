@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-
+using UnityEngine.SceneManagement;
 public class itemLock : MonoBehaviour
 {
-    public enum Components { Screw, cpu, ram, ssd, fan, Case, Gpu, Wifi , Psu, panel}
+    public enum Components { Screw, cpu, ram, ssd, fan, Case, Gpu, Wifi , Psu, panel, Quit}
 
     public Components Component;
     [Header ("Other component")]
@@ -30,6 +30,7 @@ public class itemLock : MonoBehaviour
     private bool wifiTrue = false;
     private bool psuTrue = false;
     private bool panelTrue = false;
+    private bool quitTrue = false;
     public GameObject speedRunManager;
     public bool speedRun = false;
     
@@ -74,6 +75,9 @@ public class itemLock : MonoBehaviour
                 break;
             case Components.panel:
                 panelTrue = true;
+                break;
+            case Components.Quit:
+                quitTrue = true;
                 break;
         }
     }
@@ -204,6 +208,13 @@ public class itemLock : MonoBehaviour
             {
                 speedRunManager.GetComponent<SpeedRunManager>().PSU();
             }
+        }
+        if (collision.gameObject.tag == "Quit" && quitTrue == true)
+        {
+            //this quits the game to the main menu
+            SceneManager.LoadScene("Authentication");
+
+
         }
     }
 
