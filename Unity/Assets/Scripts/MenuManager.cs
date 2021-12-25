@@ -24,13 +24,18 @@ public class MenuManager : MonoBehaviour
         displayName.text = authMgr.GetCurrentUserDisplayName();
     }
 
-    public void PlayGame()
+    public void Tutorial()
     {
         playTransition = true;
         AudioClipManager.PlaySound("button");
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene("SampleScene");
     }
-
+    public void SpeedRun()
+    {
+        playTransition = true;
+        AudioClipManager.PlaySound("button");
+        SceneManager.LoadScene("SpeedRun");
+    }
     public void QuitGame()
     {
         AudioClipManager.PlaySound("button");
