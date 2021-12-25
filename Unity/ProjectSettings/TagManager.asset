@@ -13,7 +13,8 @@ TagManager:
   - Gpu
   - Wfi
   - PSU
-  - MotherBoard
+  - panel
+  - Quit
   layers:
   - Default
   - TransparentFX
