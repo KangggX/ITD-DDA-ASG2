@@ -31,16 +31,6 @@ public class itemLock : MonoBehaviour
     private bool psuTrue = false;
     private bool panelTrue = false;
     private bool quitTrue = false;
-    public GameObject speedRunManager;
-    public bool speedRun = false;
-    
-    private void Start()
-    {
-        if (speedRunManager.activeInHierarchy)
-        {
-            speedRun = speedRunManager.GetComponent<SpeedRunManager>().speedRun;
-        }
-    }
 
     void Update()
     {
@@ -90,10 +80,6 @@ public class itemLock : MonoBehaviour
             
             ItemModel.SetActive(false);
             this.gameObject.SetActive(false);
-            if (speedRun)
-            {
-                speedRunManager.GetComponent<SpeedRunManager>().Screwed();
-            }
         }
         if (collision.gameObject.tag == "Cpu" && cpuTrue == true)
         {
@@ -102,10 +88,6 @@ public class itemLock : MonoBehaviour
 
             ItemModel.SetActive(false);
             this.gameObject.SetActive(false);
-            if (speedRun)
-            {
-                speedRunManager.GetComponent<SpeedRunManager>().CPU();
-            }
         }
         if (collision.gameObject.tag == "Ram" && ramTrue == true)
         {
@@ -114,10 +96,6 @@ public class itemLock : MonoBehaviour
 
             ItemModel.SetActive(false);
             this.gameObject.SetActive(false);
-            if (speedRun)
-            {
-                speedRunManager.GetComponent<SpeedRunManager>().RAM();
-            }
         }
         if (collision.gameObject.tag == "Ssd" && ssdTrue == true)
         {
@@ -127,10 +105,6 @@ public class itemLock : MonoBehaviour
             ItemModel.SetActive(false);
             this.gameObject.SetActive(false);
             screwComponent.SetActive(true);
-            if (speedRun)
-            {
-                speedRunManager.GetComponent<SpeedRunManager>().SSD();
-            }
         }
         if (collision.gameObject.tag == "Fan" && fanTrue == true)
         {
@@ -140,10 +114,6 @@ public class itemLock : MonoBehaviour
             ItemModel.SetActive(false);
             this.gameObject.SetActive(false);
             screwComponent.SetActive(true);
-            if (speedRun)
-            {
-                speedRunManager.GetComponent<SpeedRunManager>().Fan();
-            }
         }
         if (collision.gameObject.tag == "Case" && caseTrue == true)
         {
@@ -153,9 +123,6 @@ public class itemLock : MonoBehaviour
             ItemModel.SetActive(false);
             this.gameObject.SetActive(false);
             screwComponent.SetActive(true);
-            if (speedRun)
-            {speedRunManager.GetComponent<SpeedRunManager>().CASE();
-            }
         }
         if (collision.gameObject.tag == "Gpu" && gpuTrue == true)
         {
@@ -164,11 +131,6 @@ public class itemLock : MonoBehaviour
 
             ItemModel.SetActive(false);
             this.gameObject.SetActive(false);
-            
-            if (speedRun)
-            {
-                speedRunManager.GetComponent<SpeedRunManager>().GPU();
-            }
         }
         if (collision.gameObject.tag == "Wfi" && wifiTrue == true)
         {
@@ -177,11 +139,6 @@ public class itemLock : MonoBehaviour
 
             ItemModel.SetActive(false);
             this.gameObject.SetActive(false);
-
-            if (speedRun)
-            {
-                speedRunManager.GetComponent<SpeedRunManager>().WIFI();
-            }
         }
         if (collision.gameObject.tag == "PSU" && psuTrue == true)
         {
@@ -190,11 +147,6 @@ public class itemLock : MonoBehaviour
 
             ItemModel.SetActive(false);
             this.gameObject.SetActive(false);
-
-            if (speedRun)
-            {
-                speedRunManager.GetComponent<SpeedRunManager>().PSU();
-            }
         }
         if (collision.gameObject.tag == "panel" && panelTrue == true)
         {
@@ -203,11 +155,6 @@ public class itemLock : MonoBehaviour
 
             ItemModel.SetActive(false);
             this.gameObject.SetActive(false);
-
-            if (speedRun)
-            {
-                speedRunManager.GetComponent<SpeedRunManager>().PSU();
-            }
         }
         if (collision.gameObject.tag == "Quit" && quitTrue == true)
         {
