@@ -5,7 +5,7 @@ using System;
 
 public class itemLock : MonoBehaviour
 {
-    public enum Components { Screw, cpu, ram, ssd, fan, Case, Gpu, Wifi }
+    public enum Components { Screw, cpu, ram, ssd, fan, Case, Gpu, Wifi , Psu}
 
     public Components Component;
     [Header ("Other component")]
@@ -28,6 +28,7 @@ public class itemLock : MonoBehaviour
     private bool caseTrue = false;
     private bool gpuTrue = false;
     private bool wifiTrue = false;
+    private bool psuTrue = false;
     public GameObject speedRunManager;
     public bool speedRun = false;
     
@@ -66,6 +67,9 @@ public class itemLock : MonoBehaviour
                 break;
             case Components.Wifi:
                 wifiTrue = true;
+                break;
+            case Components.Psu:
+                psuTrue = true;
                 break;
         }
     }
@@ -167,6 +171,20 @@ public class itemLock : MonoBehaviour
         {
             //ItemCol.GetComponent<ScrewInteract>().enabled = true;
             ItemAni.SetActive(true);
+
+            ItemModel.SetActive(false);
+            this.gameObject.SetActive(false);
+
+            if (speedRun)
+            {
+                //change accordingly
+                //speedRunManager.GetComponent<SpeedRunManager>().RAM();
+            }
+        }
+        if (collision.gameObject.tag == "PSU" && psuTrue == true)
+        {
+            //ItemCol.GetComponent<ScrewInteract>().enabled = true;
+            //ItemAni.SetActive(true);
 
             ItemModel.SetActive(false);
             this.gameObject.SetActive(false);

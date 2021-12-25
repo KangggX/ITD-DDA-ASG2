@@ -12,6 +12,7 @@ TagManager:
   - Case
   - Gpu
   - Wfi
+  - PSU
   layers:
   - Default
   - TransparentFX
