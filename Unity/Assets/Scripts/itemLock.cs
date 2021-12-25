@@ -121,8 +121,7 @@ public class itemLock : MonoBehaviour
             screwComponent.SetActive(true);
             if (speedRun)
             {
-                //change accordingly
-                //speedRunManager.GetComponent<SpeedRunManager>().RAM();
+                speedRunManager.GetComponent<SpeedRunManager>().SSD();
             }
         }
         if (collision.gameObject.tag == "Fan" && fanTrue == true)
@@ -135,8 +134,7 @@ public class itemLock : MonoBehaviour
             screwComponent.SetActive(true);
             if (speedRun)
             {
-                //change accordingly
-                //speedRunManager.GetComponent<SpeedRunManager>().RAM();
+                speedRunManager.GetComponent<SpeedRunManager>().Fan();
             }
         }
         if (collision.gameObject.tag == "Case" && caseTrue == true)
@@ -148,9 +146,7 @@ public class itemLock : MonoBehaviour
             this.gameObject.SetActive(false);
             screwComponent.SetActive(true);
             if (speedRun)
-            {
-                //change accordingly
-                //speedRunManager.GetComponent<SpeedRunManager>().RAM();
+            {speedRunManager.GetComponent<SpeedRunManager>().CASE();
             }
         }
         if (collision.gameObject.tag == "Gpu" && gpuTrue == true)
@@ -163,8 +159,7 @@ public class itemLock : MonoBehaviour
             
             if (speedRun)
             {
-                //change accordingly
-                //speedRunManager.GetComponent<SpeedRunManager>().RAM();
+                speedRunManager.GetComponent<SpeedRunManager>().GPU();
             }
         }
         if (collision.gameObject.tag == "Wfi" && wifiTrue == true)
@@ -177,8 +172,7 @@ public class itemLock : MonoBehaviour
 
             if (speedRun)
             {
-                //change accordingly
-                //speedRunManager.GetComponent<SpeedRunManager>().RAM();
+                speedRunManager.GetComponent<SpeedRunManager>().WIFI();
             }
         }
         if (collision.gameObject.tag == "PSU" && psuTrue == true)
@@ -191,8 +185,7 @@ public class itemLock : MonoBehaviour
 
             if (speedRun)
             {
-                //change accordingly
-                //speedRunManager.GetComponent<SpeedRunManager>().RAM();
+                speedRunManager.GetComponent<SpeedRunManager>().PSU();
             }
         }
     }

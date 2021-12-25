@@ -13,6 +13,7 @@ public class SpeedRunManager : MonoBehaviour
 
     public bool speedRun = true;
 
+    bool comCase = false;
     bool cpu = false;
     bool gpu = false;
     bool ssd = false;
@@ -22,6 +23,7 @@ public class SpeedRunManager : MonoBehaviour
     bool cpufan = false;
     bool motherboard = false;
     bool screwed = false;
+    bool wifi = false;
 
     private void Start()
     {
@@ -46,7 +48,10 @@ public class SpeedRunManager : MonoBehaviour
             counter = 0;
         }
     }
-
+    public void WIFI()
+    {
+        wifi = true;
+    }
     public void Screwed()
     {
         screw = screw + 1;
@@ -82,7 +87,10 @@ public class SpeedRunManager : MonoBehaviour
     {
         fan = true;
     }
-
+    public void CASE()
+    {
+        comCase = true;
+    }
     public void InGameCheck()
     {
         gameStart = true;
@@ -93,7 +101,7 @@ public class SpeedRunManager : MonoBehaviour
         {
             screwed = true;
         }
-        if (cpu && psu && gpu && ssd & ram & fan && cpufan && motherboard && screwed == true)
+        if (cpu && comCase && psu && gpu && ssd & ram & fan && cpufan && motherboard && screwed == true)
         {
             Debug.Log("level completed");
             Debug.Log(timer);
