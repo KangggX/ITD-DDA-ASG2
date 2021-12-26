@@ -36,7 +36,7 @@ public class SpeedRunGame : MonoBehaviour
             this.transform.position = other.transform.position;
             this.transform.rotation = other.transform.rotation;
             this.transform.parent = motherBoard.transform;
-
+            
             speedRunManager.GetComponent<ProgressCheck>().ramIn = true;
             this.GetComponent<Rigidbody>().isKinematic = true;
             this.GetComponent<XRGrabInteractable>().enabled = false;
