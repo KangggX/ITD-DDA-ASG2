@@ -8,10 +8,15 @@ public class itemLock : MonoBehaviour
     public enum Components { Screw, cpu, ram, ssd, fan, Case, Gpu, Wifi , Psu, panel, Quit}
 
     public Components Component;
+    
     [Header ("Other component")]
     public GameObject ItemAni;
 
     public GameObject ItemModel;
+
+    public GameObject currectTutorial;
+
+    public GameObject nextTutorial;
     [Header("Screw")]
     public GameObject screwComponent;
     //if needed
@@ -20,6 +25,7 @@ public class itemLock : MonoBehaviour
     //if needed
     public GameObject RotateScrew;
 
+    public static int ram;
     private bool screwTrue = false;
     private bool cpuTrue = false;
     private bool ramTrue = false;
@@ -31,6 +37,10 @@ public class itemLock : MonoBehaviour
     private bool psuTrue = false;
     private bool panelTrue = false;
     private bool quitTrue = false;
+    private void Start()
+    {
+        ram = 0;
+    }
 
     void Update()
     {
@@ -75,11 +85,16 @@ public class itemLock : MonoBehaviour
     {
         if (collision.gameObject.tag == "Screw" && screwTrue == true)
         {
+
+            
             ItemCol.GetComponent<ScrewInteract>().enabled=true;
             ItemAni.SetActive(true);
             
             ItemModel.SetActive(false);
             this.gameObject.SetActive(false);
+
+            
+
         }
         if (collision.gameObject.tag == "Cpu" && cpuTrue == true)
         {
@@ -88,14 +103,19 @@ public class itemLock : MonoBehaviour
 
             ItemModel.SetActive(false);
             this.gameObject.SetActive(false);
+            currectTutorial.SetActive(false);
+            nextTutorial.SetActive(true);
         }
         if (collision.gameObject.tag == "Ram" && ramTrue == true)
         {
+            bool i = true;
             //ItemCol.GetComponent<ScrewInteract>().enabled = true;
             ItemAni.SetActive(true);
 
             ItemModel.SetActive(false);
             this.gameObject.SetActive(false);
+            
+            
         }
         if (collision.gameObject.tag == "Ssd" && ssdTrue == true)
         {
@@ -147,6 +167,7 @@ public class itemLock : MonoBehaviour
 
             ItemModel.SetActive(false);
             this.gameObject.SetActive(false);
+            itemCheck._psu += 1;
         }
         if (collision.gameObject.tag == "panel" && panelTrue == true)
         {
@@ -159,7 +180,7 @@ public class itemLock : MonoBehaviour
         if (collision.gameObject.tag == "Quit" && quitTrue == true)
         {
             //this quits the game to the main menu
-            SceneManager.LoadScene("Authentication");
+            SceneManager.LoadScene("Main Menu");
 
 
         }

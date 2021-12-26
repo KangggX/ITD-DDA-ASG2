@@ -204,6 +204,7 @@ public class AuthManager: MonoBehaviour
             {
                 currentPlayer = task.Result;
                 Debug.Log("Welcome!" + currentPlayer.UserId + ", " + currentPlayer.Email);
+                SceneManager.LoadScene(1);
             }
         });
         return currentPlayer;
