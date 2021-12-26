@@ -180,7 +180,7 @@ public class itemLock : MonoBehaviour
         if (collision.gameObject.tag == "Quit" && quitTrue == true)
         {
             //this quits the game to the main menu
-            SceneManager.LoadScene("Main Menu");
+            SceneManager.LoadScene("NewMainMenu");
 
 
         }

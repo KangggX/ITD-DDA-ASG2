@@ -48,12 +48,16 @@ public class SpeedRunManager : MonoBehaviour
 
     public void GameEnd()
     {
+        print("wdawd");
         timeActive = false;
         if (isUpdated == false)
         {
+            print("end");
+            SceneManager.LoadScene("NewMainMenu");
             UpdatePlayerStats((int)currentTime);
+            
             isUpdated = true;
-            SceneManager.LoadScene("Main Menu");
+            
         }
     }
 

@@ -85,7 +85,7 @@ public class itemCheck : MonoBehaviour
             case ItemChecker.panel:
                 if (_panel == numInCheck)
                 {
-                    SceneManager.LoadScene("Main Menu");
+                    SceneManager.LoadScene("NewMainMenu");
                     
                 }
                 break;
