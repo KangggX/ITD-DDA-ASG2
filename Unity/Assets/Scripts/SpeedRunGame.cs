@@ -28,6 +28,7 @@ public class SpeedRunGame : MonoBehaviour
             this.transform.parent = motherBoard.transform;
 
             speedRunManager.GetComponent<ProgressCheck>().cpuIn = true;
+            this.GetComponent<BoxCollider>().enabled = false;
             this.GetComponent<Rigidbody>().isKinematic = true;
             this.GetComponent<XRGrabInteractable>().enabled = false;
         }
@@ -38,6 +39,8 @@ public class SpeedRunGame : MonoBehaviour
             this.transform.parent = motherBoard.transform;
             
             speedRunManager.GetComponent<ProgressCheck>().ramIn = true;
+            other.gameObject.GetComponent<BoxCollider>().enabled = false;
+            this.GetComponent<BoxCollider>().enabled = false;
             this.GetComponent<Rigidbody>().isKinematic = true;
             this.GetComponent<XRGrabInteractable>().enabled = false;
         }
@@ -48,6 +51,8 @@ public class SpeedRunGame : MonoBehaviour
             this.transform.parent = motherBoard.transform;
 
             speedRunManager.GetComponent<ProgressCheck>().ssdIn = true;
+            other.gameObject.GetComponent<BoxCollider>().enabled = false;
+            this.GetComponent<BoxCollider>().enabled = false;
             this.GetComponent<Rigidbody>().isKinematic = true;
             this.GetComponent<XRGrabInteractable>().enabled = false;
         }
@@ -58,6 +63,8 @@ public class SpeedRunGame : MonoBehaviour
             this.transform.parent = motherBoard.transform;
 
             speedRunManager.GetComponent<ProgressCheck>().fanIn = true;
+            other.gameObject.GetComponent<BoxCollider>().enabled = false;
+            this.GetComponent<BoxCollider>().enabled = false;
             this.GetComponent<Rigidbody>().isKinematic = true;
             this.GetComponent<XRGrabInteractable>().enabled = false;
             this.GetComponent<BoxCollider>().enabled = false;
@@ -70,6 +77,8 @@ public class SpeedRunGame : MonoBehaviour
             this.transform.rotation = other.transform.rotation;
 
             speedRunManager.GetComponent<ProgressCheck>().mBIn = true;
+            other.gameObject.GetComponent<BoxCollider>().enabled = false;
+            this.GetComponent<BoxCollider>().enabled = false;
             this.GetComponent<Rigidbody>().isKinematic = true;
             this.GetComponent<XRGrabInteractable>().enabled = false;
         }
@@ -80,6 +89,8 @@ public class SpeedRunGame : MonoBehaviour
             this.transform.parent = motherBoard.transform;
 
             speedRunManager.GetComponent<ProgressCheck>().gpuIn = true;
+            other.gameObject.GetComponent<BoxCollider>().enabled = false;
+            this.GetComponent<BoxCollider>().enabled = false;
             this.GetComponent<Rigidbody>().isKinematic = true;
             this.GetComponent<XRGrabInteractable>().enabled = false;
         }
@@ -90,6 +101,8 @@ public class SpeedRunGame : MonoBehaviour
             this.transform.parent = motherBoard.transform;
 
             speedRunManager.GetComponent<ProgressCheck>().wifiIn = true;
+            other.gameObject.GetComponent<BoxCollider>().enabled = false;
+            this.GetComponent<BoxCollider>().enabled = false;
             this.GetComponent<Rigidbody>().isKinematic = true;
             this.GetComponent<XRGrabInteractable>().enabled = false;
         }
@@ -99,6 +112,8 @@ public class SpeedRunGame : MonoBehaviour
             this.transform.rotation = other.transform.rotation;
 
             speedRunManager.GetComponent<ProgressCheck>().psuIn = true;
+            other.gameObject.GetComponent<BoxCollider>().enabled = false;
+            this.GetComponent<BoxCollider>().enabled = false;
             this.GetComponent<Rigidbody>().isKinematic = true;
             this.GetComponent<XRGrabInteractable>().enabled = false;
         }
@@ -110,6 +125,8 @@ public class SpeedRunGame : MonoBehaviour
             this.transform.parent = motherBoard.transform;
 
             this.GetComponent<Rigidbody>().isKinematic = true;
+            other.gameObject.GetComponent<BoxCollider>().enabled = false;
+            this.GetComponent<BoxCollider>().enabled = false;
             this.GetComponent<XRGrabInteractable>().enabled = false;
             speedRunManager.GetComponent<ProgressCheck>().screws = speedRunManager.GetComponent<ProgressCheck>().screws + 1;
 
@@ -123,6 +140,8 @@ public class SpeedRunGame : MonoBehaviour
             this.transform.rotation = other.transform.rotation;
 
             speedRunManager.GetComponent<ProgressCheck>().gpIn = true;
+            other.gameObject.GetComponent<BoxCollider>().enabled = false;
+            this.GetComponent<BoxCollider>().enabled = false;
             this.GetComponent<Rigidbody>().isKinematic = true;
             this.GetComponent<XRGrabInteractable>().enabled = false;
         }
