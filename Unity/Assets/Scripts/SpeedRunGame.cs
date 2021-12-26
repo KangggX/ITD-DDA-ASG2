@@ -93,20 +93,21 @@ public class SpeedRunGame : MonoBehaviour
             this.GetComponent<Rigidbody>().isKinematic = true;
             this.GetComponent<XRGrabInteractable>().enabled = false;
         }
-        if (other.gameObject.tag =="Psu" && thisComponent == Components.psu)
+        if (other.gameObject.tag =="PSU" && thisComponent == Components.psu)
         {
             this.transform.position = other.transform.position;
             this.transform.rotation = other.transform.rotation;
-            this.transform.parent = motherBoard.transform;
 
             speedRunManager.GetComponent<ProgressCheck>().psuIn = true;
             this.GetComponent<Rigidbody>().isKinematic = true;
             this.GetComponent<XRGrabInteractable>().enabled = false;
         }
-        if (other.gameObject.tag =="Screw" && thisComponent == Components.screw)
+        if (other.gameObject.tag =="Screw" && thisComponent == Components.screw && (speedRunManager.GetComponent<ProgressCheck>().fanIn ||
+            speedRunManager.GetComponent<ProgressCheck>().mBIn || speedRunManager.GetComponent<ProgressCheck>().gpIn))
         {
             this.transform.position = other.transform.position;
-            this.transform.parent = other.transform;
+            this.transform.rotation = other.transform.rotation;
+            this.transform.parent = motherBoard.transform;
 
             this.GetComponent<Rigidbody>().isKinematic = true;
             this.GetComponent<XRGrabInteractable>().enabled = false;
@@ -114,13 +115,12 @@ public class SpeedRunGame : MonoBehaviour
 
         }
 
-        if (other.gameObject.tag == "" && thisComponent == Components.gp && (speedRunManager.GetComponent<ProgressCheck>().cpuIn && speedRunManager.GetComponent<ProgressCheck>().ramIn
+        if (other.gameObject.tag == "panel" && thisComponent == Components.gp && (speedRunManager.GetComponent<ProgressCheck>().cpuIn && speedRunManager.GetComponent<ProgressCheck>().ramIn
             && speedRunManager.GetComponent<ProgressCheck>().ssdIn && speedRunManager.GetComponent<ProgressCheck>().fanIn && speedRunManager.GetComponent<ProgressCheck>().mBIn &&
             speedRunManager.GetComponent<ProgressCheck>().gpuIn && speedRunManager.GetComponent<ProgressCheck>().wifiIn && speedRunManager.GetComponent<ProgressCheck>().psuIn))
         {
             this.transform.position = other.transform.position;
             this.transform.rotation = other.transform.rotation;
-            this.transform.parent = motherBoard.transform;
 
             speedRunManager.GetComponent<ProgressCheck>().gpIn = true;
             this.GetComponent<Rigidbody>().isKinematic = true;
@@ -132,7 +132,8 @@ public class SpeedRunGame : MonoBehaviour
     {
         if ((speedRunManager.GetComponent<ProgressCheck>().cpuIn && speedRunManager.GetComponent<ProgressCheck>().ramIn && speedRunManager.GetComponent<ProgressCheck>().ssdIn &&
             speedRunManager.GetComponent<ProgressCheck>().fanIn && speedRunManager.GetComponent<ProgressCheck>().mBIn && speedRunManager.GetComponent<ProgressCheck>().gpuIn &&
-            speedRunManager.GetComponent<ProgressCheck>().wifiIn && speedRunManager.GetComponent<ProgressCheck>().psuIn)&& speedRunManager.GetComponent<ProgressCheck>().screws >=  13)
+            speedRunManager.GetComponent<ProgressCheck>().wifiIn && speedRunManager.GetComponent<ProgressCheck>().psuIn && speedRunManager.GetComponent<ProgressCheck>().gpIn
+            ) && speedRunManager.GetComponent<ProgressCheck>().screws >=  13)
         {
             speedRunManager.GetComponent<SpeedRunManager>().GameEnd();
         }
