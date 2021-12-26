@@ -18,6 +18,21 @@ public class SpeedRunGame : MonoBehaviour
         ProgressChecker();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag =="Ssd" && thisComponent == Components.ssd)
+        {
+            this.transform.position = other.transform.position;
+            this.transform.rotation = other.transform.rotation;
+            this.transform.parent = motherBoard.transform;
+
+            speedRunManager.GetComponent<ProgressCheck>().ssdIn = true;
+            other.gameObject.GetComponent<BoxCollider>().enabled = false;
+            this.GetComponent<BoxCollider>().enabled = false;
+            this.GetComponent<Rigidbody>().isKinematic = true;
+            this.GetComponent<XRGrabInteractable>().enabled = false;
+        }
+    }
     private void OnCollisionEnter(Collision other)
     {
         
@@ -39,18 +54,6 @@ public class SpeedRunGame : MonoBehaviour
             this.transform.parent = motherBoard.transform;
             
             speedRunManager.GetComponent<ProgressCheck>().ramIn = true;
-            other.gameObject.GetComponent<BoxCollider>().enabled = false;
-            this.GetComponent<BoxCollider>().enabled = false;
-            this.GetComponent<Rigidbody>().isKinematic = true;
-            this.GetComponent<XRGrabInteractable>().enabled = false;
-        }
-        if (other.gameObject.tag =="Ssd" && thisComponent == Components.ssd)
-        {
-            this.transform.position = other.transform.position;
-            this.transform.rotation = other.transform.rotation;
-            this.transform.parent = motherBoard.transform;
-
-            speedRunManager.GetComponent<ProgressCheck>().ssdIn = true;
             other.gameObject.GetComponent<BoxCollider>().enabled = false;
             this.GetComponent<BoxCollider>().enabled = false;
             this.GetComponent<Rigidbody>().isKinematic = true;
