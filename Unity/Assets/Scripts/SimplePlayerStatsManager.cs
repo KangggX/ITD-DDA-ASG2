@@ -8,7 +8,8 @@ using UnityEngine.SceneManagement;
 public class SimplePlayerStatsManager : MonoBehaviour
 {
 
-    public TMP_Text playerXP;
+    public TMP_Text totalgames;
+    public TMP_Text totaltime;
     public TMP_Text playerName;
     public TMP_Text highscore;
     public TMP_Text lastPlayed;
@@ -44,7 +45,11 @@ public class SimplePlayerStatsManager : MonoBehaviour
         
         if(playerStats != null)
         {
-            highscore.text = playerStats.fastestTime.ToString();
+            TimeSpan highscoreTime = TimeSpan.FromSeconds(playerStats.fastestTime);
+            highscore.text = highscoreTime.Minutes.ToString() + ":" + highscoreTime.Seconds.ToString() + " min";
+            TimeSpan totalTimeTime = TimeSpan.FromSeconds(playerStats.totalTime);
+            totaltime.text = totalTimeTime.Minutes.ToString() + ":" + totalTimeTime.Seconds.ToString() + " min";
+            totalgames.text = playerStats.totalGame.ToString();
             lastPlayed.text = UnixToDateTime(playerStats.updatedOn);
             playerName.text = auth.GetCurrentUserDisplayName();
         }
@@ -58,7 +63,8 @@ public class SimplePlayerStatsManager : MonoBehaviour
 
     public void ResetStatsUI()
     {
-        playerXP.text = "0 XP";
+        totalgames.text = "0";
+        totaltime.text = "0";
         highscore.text = "0";
         lastPlayed.text = "None";
     }

@@ -139,7 +139,7 @@ public class SimpleFirebaseManager : MonoBehaviour
                     {
                         Debug.LogFormat("Leaderboard: Rank {0} Playername {1} Highscore {2}", rankCounter, lb.displayname, lb.fastestTime);
                         rankCounter++;
-                    }    
+                    }
                 }
             }
         });

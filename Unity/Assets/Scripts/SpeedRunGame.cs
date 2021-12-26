@@ -130,10 +130,10 @@ public class SpeedRunGame : MonoBehaviour
 
     private void ProgressChecker()
     {
-        if ((speedRunManager.GetComponent<ProgressCheck>().cpuIn && speedRunManager.GetComponent<ProgressCheck>().ramIn && speedRunManager.GetComponent<ProgressCheck>().ssdIn &&
+        if ((speedRunManager.GetComponent<ProgressCheck>().cpuIn) && speedRunManager.GetComponent<ProgressCheck>().ramIn && speedRunManager.GetComponent<ProgressCheck>().ssdIn &&
             speedRunManager.GetComponent<ProgressCheck>().fanIn && speedRunManager.GetComponent<ProgressCheck>().mBIn && speedRunManager.GetComponent<ProgressCheck>().gpuIn &&
             speedRunManager.GetComponent<ProgressCheck>().wifiIn && speedRunManager.GetComponent<ProgressCheck>().psuIn && speedRunManager.GetComponent<ProgressCheck>().gpIn
-            ) && speedRunManager.GetComponent<ProgressCheck>().screws >=  13)
+             && speedRunManager.GetComponent<ProgressCheck>().screws >= 13)
         {
             speedRunManager.GetComponent<SpeedRunManager>().GameEnd();
         }

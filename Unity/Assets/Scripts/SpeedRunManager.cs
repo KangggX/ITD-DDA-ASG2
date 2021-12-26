@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using UnityEngine.SceneManagement;
 
 public class SpeedRunManager : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class SpeedRunManager : MonoBehaviour
     public TMP_Text currentTimeText;
     public int points = 0;
     public GameObject player;
+
+    //Update Database
+    public bool isUpdated = false;
 
     //Firebase
     public AuthManager authMgr;
@@ -45,6 +49,12 @@ public class SpeedRunManager : MonoBehaviour
     public void GameEnd()
     {
         timeActive = false;
+        if (isUpdated == false)
+        {
+            UpdatePlayerStats((int)currentTime);
+            isUpdated = true;
+            SceneManager.LoadScene("Main Menu");
+        }
     }
 
     public void UpdatePlayerStats(int time)
