@@ -53,6 +53,6 @@ public class MenuManager : MonoBehaviour
     {
         leaderboardTransition = true;
         AudioClipManager.PlaySound("button");
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("NewLeaderboard");
     }
 }

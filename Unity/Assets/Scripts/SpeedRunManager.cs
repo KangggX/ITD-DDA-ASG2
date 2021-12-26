@@ -53,6 +53,7 @@ public class SpeedRunManager : MonoBehaviour
         if (isUpdated == false)
         {
             print("end");
+
             SceneManager.LoadScene("NewMainMenu");
             UpdatePlayerStats((int)currentTime);
             

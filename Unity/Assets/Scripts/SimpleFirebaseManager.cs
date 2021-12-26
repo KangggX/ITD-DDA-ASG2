@@ -29,7 +29,7 @@ public class SimpleFirebaseManager : MonoBehaviour
         dbPlayerLeaderboardReference = FirebaseDatabase.DefaultInstance.GetReference("leaderboard");
     }
 
-    public void UpdatePlayerStats(string uuid, string displayname, int time)
+    public void UpdatePlayerStats(string uuid, string displayname,int time)
     {
         Debug.Log("Entering.. update player stats" + uuid);
         Query playerQuery = dbPlayerStatsReference.Child(uuid);
@@ -83,7 +83,7 @@ public class SimpleFirebaseManager : MonoBehaviour
                     //Create player stats
                     //If no existing data, first time player
                     SimplePlayerStats sp = new SimplePlayerStats(displayname, time);
-
+                    
                     SimpleLeaderboard lb = new SimpleLeaderboard(displayname, time);
                     Debug.Log("Let's write new entry" + uuid);
 
