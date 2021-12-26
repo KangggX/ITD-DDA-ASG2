@@ -41,7 +41,6 @@ var leaderboardData = {
 
 // Player key, assigned by getKey() function
 var key;
-console.log(user);
 
 // Test array (pls la don't delete)
 var tempLeaderboardArray = [];
@@ -53,10 +52,8 @@ onAuthStateChanged(auth, (user) => {
         $("#emailDetail").text(`${user.email}`);
         
         updateProfilePage(user.displayName); // Update the profile page
-        updateLeaderboard(); // Update the leaderboard page for newly created user
     } else {
         // User is signed out
-        updateLeaderboard(); // Update the leaderboard page for newly created user
     }
 });
 
@@ -126,7 +123,7 @@ function updateLeaderboard(){
         $(".leaderboard__list").append(`
             <li>
                 <div class="leaderboard__list--content leaderboard__title--ranking">Ranking</div>
-                <div class="leaderboard__list--content leaderboard__title--score">Time (MM:SS)</div>
+                <div class="leaderboard__list--content leaderboard__title--score">Fastest Time</div>
                 <div class="leaderboard__list--content leaderboard__title--username">Username</div>
             </li>
         `);
